@@ -1,0 +1,292 @@
+JQ介绍    --   更好的操作JS        
+
+
+jQuery是目前使用最广泛的javascript函数库
+
+jQuery的版本分为1.x系列和2.x、3.x系列，1.x系列兼容低版本的浏览器
+
+PC - 都是1.x系列  保证通用性
+移动端 - 都是使用 3.x
+
+
+<!--导入JQ库   快捷输出：sc  选择中script src  在选.js文件名-->
+
+<script type="text/javascript" src="jquery-1.12.4.min.js"></script>  // 导入JQ库   后面.im
+
+
+入口函数：当代码放在网页的头部<head></head>标签中。为了让网页内容加载之后再执行JQ程序而书写的函数。（写在<body></body>后面就不使用入口函数）
+JQ入口函数   --  文档加载完再执行
+
+
+简写方式：   常用
+<script type="text/javascript">
+    $(function(){
+           JQ执行代码 
+        });
+</script>
+
+
+ready方式      不常用
+<script type="text/javascript">
+
+$(document).ready(function(){
+     ......
+});
+</script>
+
+
+jquery选择器
+
+
+jquery用法思想一
+选择某个网页元素，然后对它进行某种操作
+
+
+jquery选择器可以快速地选择元素，选择规则和css样式相同，使用长度属性length属性判断是否选择成功。
+
+单个元素操作语法格式：
+
+
+选择标签   $('标签名')
+以字典的方式修改CSS属性： 选择对象.css({'样式名1':'值1','样式名2':'值2'...})
+例子：$('h1').css({'color':'red'});    选中所有的h1 改变他的CSS样式color为red;
+
+
+选择类名class    $('.类名')      和style中使用class使用一样
+例子： $('.blue').css({'color':'blue'});  选择类名为blue的元素
+
+
+选择id    $('#id名')      #号是特有的格式 不是id本身的名字
+$('#name').css({'color':'red'})  选中id名为name的元素把颜色改为red
+
+
+
+层级选择用空格隔开   $('div span')    选取div中的span
+例子：  $('div span').css({'color':'red'});
+
+
+
+多个元素操作语法格式：
+
+
+多个标签    $('标签1，标签2，标签3...')
+//让所有的h1 span input对象的css样式中的height值设置为50px
+例子： $('h1,span,input').css({'height':'50px'});
+
+
+多个类class   $('类1，类2，类3')
+//给类.red .blue都添加上一个5px solid green的边框。
+例子： $('.red,.blue').css({'border':'5px solid green'});
+
+
+选择多个id      $('#id名1,#id名2').css({'标签名':'值'})
+//例子：选中两个id名为div1、span1 修改css样式中color值为red
+$('#div1,#span1').css({'color':'red'})
+
+
+对选择集    与JS一样
+
+进行过滤     
+
+	* .has是否包含     
+	* .not不      
+	* .eq()第几个
+
+
+
+
+$('div').has('p');     // 选择包含p元素的div元素   
+$('div').not('.myClass');     //选择class不等于myClass的div元素
+$('div').eq(5);     //选择第6个div元素
+
+
+选择集转移   亲戚选择    都是以自己为出发点
+
+
+	* .prev()上一个同级元素
+	* .prevAll()上面所有的同级元素
+	* .next()下一个同级元素
+	* .next()all下面所有的同级元素
+	* .parent()父级元素
+	* .children()所有子级元素   
+	* .sibings()所有同级元素    常用     选中的所有兄弟 不包括自己
+	* .find()查找内部所有和括号相同的元素
+
+
+
+
+$('#box').prev(); //选择id是box的元素前面紧挨的同辈元素
+$('#box').prevAll(); //选择id是box的元素之前所有的同辈元素
+$('#box').next(); //选择id是box的元素后面紧挨的同辈元素
+$('#box').nextAll(); //选择id是box的元素后面所有的同辈元素
+$('#box').parent(); //选择id是box的元素的父元素
+$('#box').children(); //选择id是box的元素的所有子元素
+$('#box').siblings(); //选择id是box的元素的同级元素
+$('#box').find('.myClass'); //选择id是box的元素内的class等于myClass的元素
+
+属性选择器。根据属性值去选择元素
+
+
+//选择input标签中type属性等于'text'的标签
+例子：$('input[type="text"]').css({'height':''50px});
+
+根据选择器获取样式的值。  获取颜色时，得出来的是rgb格式的
+
+
+// $('选择对象').css('要获得值的样式名')
+alert($('h1').css('font-size'));   //弹出h1中的字体大小的值
+
+获取背景颜色时  源选择器必须用background-color:blue;
+
+
+//如果css用background:blue; 
+//        alert($('.blue').css('background'));  
+ //获得样式为 rgb(0,0,255) none repeat scroll 0% 0% / auto padding-box border-box
+
+//分析：因为background是背景的全部样式
+
+正确获取背影颜色    css中使用background-color:blue;
+alert($('.blue').css('background-color'));     //弹出背景颜色值blue
+
+
+
+判断是否选择到了元素
+
+jquery有容错机制，即使没有找到元素，也不会出错，可以用length属性来判断是否找到了元素,length等于0，就是没选择到元素，length大于0，就是选择到了元素。
+
+
+var $div1 = $('#div1');
+var $div2 = $('#div2');
+alert($div1.length); // 弹出1    选取到了一个元素
+alert($div2.length); // 弹出0
+......
+<div id="div1">这是一个div</div>
+
+
+jquery样式操作
+
+jquery用法思想二
+同一个函数完成取值和赋值
+
+操作行间样式
+
+
+// 获取div的样式
+$("div").css("width");
+
+
+//设置div的样式
+$("div").css("width","30px");
+$("div").css({fontSize:"30px",color:"red"});
+
+特别注意
+    选择器获取的多个元素，获取信息获取的是第一个，比如：$("div").css("width")，获取的是第一个div的width。
+
+操作样式类名
+
+
+	* .addClass()   为选中的元素添加括号里面的类class  注意：操作的类名不需要带上点.
+	* .removeClass()   为选中的元素移除括号里面的类class
+	* .removeClass("class1 class2")  移除多个
+	* .toggleClass()   重复切换括号里面的样式   添加/移除
+
+
+
+
+
+$("#div1").addClass("divClass2") //为id为div1的对象追加样式divClass2
+$("#div1").removeClass("divClass")  //移除id为div1的对象的class名为divClass的样式
+$("#div1").removeClass("divClass divClass2") //移除多个样式
+$("#div1").toggleClass("anotherClass") //重复切换anotherClass样式
+
+//一个标签可以有多个class  也可以写在一起 class = 'red font30'中间用空格隔开
+//常用的属性放一个class中   需要时就写在使用的标签后面，自己需要改变某些的就在后面空格增加新的属性
+//这样即能应用新的属性 也能更改、增加某些
+
+
+绑定click点击事件
+
+
+语法结构   点击选中的元素触发事件
+$('选中的元素名').click(function){
+    //内部是用this指的是原生对象   谁触发点击事件就指代谁
+    //使用 $(this)  -->  指代选中的元素名
+    });
+
+
+获取元素的索引值index()
+
+inde()匹配元素相对于同胞元素的索引位置。获取相同的同级元素中的某一个
+
+索引值也是从0开始数起的
+
+
+var $li = $('.list li').eq(1);          选取类名为.list中第2个li元素
+alert($li.index()); // 弹出1         第二个li元素的索引值为1
+......
+<ul class="list">
+    <li>1</li>
+    <li>2</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+</ul>
+
+
+排它思想
+
+
+$('li').click(function(){
+                    
+    //获取当前的下标(索引)    也是从0开始
+     alert($(this).index());
+                    
+    //链式编程 可以站在自己的角度去选择其他的元素
+
+    $(this).css({'background':'pink'}).siblings().css({'background':'white'});
+
+    //谁点击就改变的它的css样式，让它高亮显示     后面跟一个链式-》相当与继续使用this  后面是让它所有的其他（除了自己）同级兄弟背景颜色都是白色                                                            
+    })；
+
+
+jquery动画  （过渡animate)
+
+通过animate方法可以设置元素某属性值上的动画，可以设置一个或多个属性值，动画执行完成后会执行一个函数。
+
+使用条件：必须是以px为单位的属性才能做过渡
+
+
+语法格式：
+$(选中的某个元素).animate(参数一,参数二,参数三,参数四);
+
+
+	* 参数一：要改变的样式属性值，写成字典的形式  常用
+	* 参数二：动画持续的时间，单位为毫秒，一般不写单位
+	* 参数三：动画曲线，默认为‘swing’先加后减，缓冲运动，还可以设置为‘linear’，匀速运动
+	* 参数四：动画回调函数，动画完成后执行的匿名函数  不常用
+
+
+
+
+//例子：点击class名为input的元素，让class名为div的元素在2000毫秒内匀速linear改变元素的width为500px;height为500px。
+$('input').click(function(){
+    $('div').stop().animate({    
+                //.stop()解决排队机制问题。建议：以后每个动画的前面都加上.stop()
+                //如果写在一个animate中，里面的css属性是同步进行
+        'width':'500px',
+               'heigth':'500px'
+    },2000,'linear');
+});
+
+
+//写在不同的animate中可做成分步动画
+//分步动画：就是做完上一个动画之后再接着做第二个动画
+//先改变width为500px  在改变height为500px
+$('div').stop().animate({
+    'width':'500px'
+},2000).stop().animate({
+    'height':'500px'
+},2000)；
+
+
+
