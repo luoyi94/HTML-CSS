@@ -1,0 +1,473 @@
+事件处理
+
+事件绑定方法
+
+可以用 v-on 指令监听 DOM 事件（或简写@)，并在触发时运行一些 JavaScript 代码，事件的处理，简单的逻辑可以写在指令中，复杂的需要在vue对象的methods属性中指定处理函数。
+
+
+<div id="app">
+    <p>{{message}}</p>           
+    <button @click="fnChangeMsg">改变数据和视图</button>
+    <!--@后面跟各种事件-->
+    <input @mouseleave="lll" type="text"/>
+</div>
+......
+<script type="text/javascript">
+    var vm = new Vue({
+        el:'#app',   //选取标签
+        data:{message:'hello world!'},        
+        methods:{
+        //获取事件：操作事件
+            fnChangeMsg:function(){
+            this.message = '我是vue.js改变之后的';
+                },
+            lll:function(){
+            this.message = '光标移入文本框啦！';
+            }
+        }
+    });            
+</script>
+
+事件修饰符
+
+实际开发中，事件绑定有时候牵涉到阻止事件冒泡以及阻止默认行为，在vue.js可以加上事件修饰符
+
+<!-- 阻止单击事件继续传播 -->
+<a v-on:click.stop="doThis"></a>
+
+<!-- 提交事件不再重载页面 -->
+<form v-on:submit.prevent="onSubmit"></form>
+
+<!-- 修饰符可以串联 -->
+<a v-on:click.stop.prevent="doThat"></a>
+
+<!-- 只有修饰符 -->
+<form v-on:submit.prevent></form>
+
+例子：阻止事件冒泡的弹框
+
+
+<div class="a" id="app" @click="fnA">   
+    <div class="b" @click.stop="fnB">   //加.stop阻止事件冒泡
+        <div class="c" @click.stop="fnC"></div>
+    </div>
+</div>
+......
+var vm = new Vue({
+    el:'#app',
+    methods:{
+        fnA:function(){
+            alert('a')
+        },
+        fnB:function(){
+            alert('B')
+        },
+        fnC:function(){
+            alert('C')
+        }
+    }
+});
+
+例子：弹框
+总结：1，使用v-show控制弹框的内容显示和隐藏。2，自定义一个布尔类型的参数，通过更改参数的值来达到按照事件隐藏和显示。
+注意：使用v-show就不需要css里面的display属性值了，因为事件里面有嵌套事件。所以要阻止事件冒泡，@clic.stop可以阻止事件冒泡和点击事件。
+
+vue控制元素显示隐藏的就只有v-show这个属性。
+
+
+表单输入绑定
+
+可以用 v-model 指令在表单 <input> 及 <textarea> 元素上创建双向数据绑定。它会根据控件类型自动选取正确的方法来更新元素
+
+单行文本框  input
+
+<input v-model="message">       <--message为vue中自定义参数-->
+<p>{{ message }}</p>
+
+多行文本框  textarea
+
+<p>{{ message }}</p>
+<textarea v-model="message"></textarea>
+
+复选框   checkbox
+
+单个复选框，绑定到布尔值：            <--che为vue中定义的自定义布尔值类型参数-->
+
+<input type="checkbox" v-model="che">
+<label >{{ che}}</label>
+
+多个复选框，绑定到同一个数组：   checkbox .....   
+
+单选框     radio    绑定到空字符类型
+
+下拉框       select option
+
+运用上面的例子：
+
+
+<div id="app">
+            <!--根据保存方式：单个使用字符串或者布尔值  多个就使用数据的方式-->
+            
+            
+            <!--获取表单中的value-->
+            <!--表单绑定 通过表单选择或输入改变自定义参数的值  双向数据绑定-->
+            
+            <!--绑定表单  message与下面的data的message相同，input输入的内容会更新到全局-->
+            <input v-model="message" placeholder="edit me" />
+            <h1>{{ message }}</h1>
+            
+            <!--多行文本框绑定无法读取空格和回车-->
+            <textarea v-model="tarea"></textarea>
+            <h1>{{tarea}}</h1>
+            
+            
+            <!--单个复选框  保存到布尔值中-->
+            <input type="checkbox" v-model="che"/>同意协议
+            <h1>{{che}}</h1>
+            
+            <!--多个复选框要保存到自定义参数为数组，数组是根据复选框中的value去获取的-->
+            <input type="checkbox" value="篮球" v-model="aihao"/>篮球
+            <input type="checkbox" value="足球" v-model="aihao"/>足球
+            <input type="checkbox" value="气球" v-model="aihao"/>皮球
+            <h1>{{aihao}}</h1>
+            
+            
+            <!--单选框  用字符串保存，因为它只保存一个值，也是根据单选框中的value获取的 （不需要写name）-->
+            <input type="radio" v-model="sex" value="man"/>男
+            <input type="radio" v-model="sex" value="girle"/>女
+            <input type="radio" v-model="sex" value="pwd"/>保密
+            <h1>{{sex}}</h1>
+            
+            <!--下拉框 用字符串保存，因为它只保存一个值，在select上使用v-model,可以使用value获取保存，中文不容易判断-->
+            <select v-model="adree">
+                <option value="0">选项一</option>
+                <option value="1">选项二</option>
+                <option value="2">选项三</option>
+            </select>
+            <h1>{{adree}}</h1>
+        </div>
+
+... ...
+    //需要设置默认值就在自定义参数后面写
+    <script type="text/javascript">
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                message:'啦啦啦',
+                tarea:'',
+                che:true,
+                sex:'',
+                aihao:[],
+                adree:'0'
+            }
+        })
+    </script>
+
+案例：聊天对话框   
+用json格式的原因：每一条数据是有两个可变的，json刚好可以满足一条数据中调用不同的属性
+总结：1，定义参数为列表[{}]json格式    需要改变的就用参数，不改变的内容就放在HTML中，变化的值放在参数中，可以随时更新。
+2，在html中循环输出上面定义参数的数据v-for="item in list"，内容就用item为一个数据。
+3，绑定class，根据变量中的item的值在html中判断使用哪种类。
+4，获取文本框内容点击发送按钮调用函数，把内容添加到列表中，则v-for自动循环出其中元素的个数。
+5，根据下拉框判断用户是谁。绑定下拉框，判断value值，更改到文本框内容中，随着添加到列表中。
+6，在点击事件函数中，清空用户输入的内容为空，if判断空则提示并return。
+
+总结：使用vue数据输出的，增删改查类的，都是首先页面中已经有的内容保存，再循环出的输出。固定的内容放在HTML中，改变的内容放在自定义参数中。
+
+
+
+
+
+
+
+计算属性和侦听属性
+
+计算属性    compute   --页面一刷新就显示
+
+模板内的表达式非常便利，但是设计它们的初衷是用于简单运算的。在模板中放入太多的逻辑会让模板过重且难以维护。例如：
+
+
+<div id="example">
+  {{ message.split('').reverse().join('') }}
+</div>
+
+这个表达式的功能是将message字符串进行反转，这种带有复杂逻辑的表达式，我们可以使用计算属性
+
+
+<div id="app">
+    //调用函数一般是不需要带()
+    <h1>{{ rec }}</h1>
+</div>
+......
+<script type="text/javascript">
+    var vm = new Vur({
+        el:'app',
+        data:{
+            message:'0123456789'
+        },
+        //methods是专门给事件调用的函数
+        //computed专门给一开始就调用函数去使用
+        compute:{
+            return this.message.spit('').reverse().join('')  
+        }
+    })
+</scrupt>
+
+侦听属性     watch:
+
+侦听属性的作用是侦听某属性值的变化，从而做相应的操作，侦听属性是一个对象，它的键是要监听的对象或者变量，值一般是函数,当你侦听的元素发生变化时，需要执行的函数，这个函数有两个形参，第一个是当前值，第二个是变化后的值。
+
+
+<div id="app">
+            <input type="button" value="递增" @click="num++" />
+            <h1>{{ num }}</h1>
+</div>
+... ...
+    <script type="text/javascript">
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                num:0
+            },
+            //监听的作用：监听某个自定义参数，当次参数发送变化，就触发里面的函数
+            watch:{
+                // 监听的参数:funciton(改变之前的值,改变之后的值){}
+                num:function(newval,oldval){
+                    console.log(newval + '|' + oldval)
+            }
+            }
+        });
+    </script>;
+
+
+生命周期
+
+每个Vue实例在被创建时都要经过一系列的初始化过程——例如，需要设置数据监听、编译模板、将实例挂载到DOM并在数据变化时更新 DOM 等。同时在这个过程中会自动运行一些叫做生命周期钩子的函数，我们可以使用这些函数，在实例的不同阶段加上我们需要的代码，实现特定的功能。
+ 
+最常用：mounted     专门为vue与数据交互时使用的axios.js库
+实例挂载到dom之后被调用，可以当成是vue对象的ready方法来使用，一般用它来做dom的初始化操作。
+
+
+<div id="app'></div>
+... ...
+<script>
+    var vm = new Vue({
+        el:'#app',
+        mounte:function(){
+            //因为vm创建时就调用函数  所以直接弹出a
+            alert('a')      
+        }
+    })
+</script>
+
+
+
+
+数据交互
+
+vue.js没有集成ajax功能，要使用ajax功能，可以使用vue官方推荐的axios.js库来做ajax的交互。使用的数据文件格式也是json，而且功能和ajax一样，只是语法上有不一样的。
+
+axios常用写法：   一般都要写在mounted里面
+
+
+
+<script type="text/javascript" src="vue.min.js" ></script>     <--导入vue模块-->
+<script type="text/javascript" src="axios.min.js" ></script>    <--导入axios模块-->
+
+... ...
+var vm = new Vue({
+    el:'#app',
+    mounted:function(){
+        axios({
+            url:'myJson.json',    //请求数据的地址
+            method:'get'         // 提交的方式
+        })
+        .then(function(data){     //请求成功之后在执行的回调函数
+            //data为参数，此时拿到的data为一个对象boject
+            //一般的都放在data:里面
+            console.log(data);
+        })
+        .catch(function(){        //请求失败之后执行的回调函数
+            alert('请求失败')
+        })
+    }
+});
+
+例子：股票列表 
+总结：从list.json中获取数据，保存在数组中，使用和聊天对话框一样的套路，循环出数据，格式化输出
+
+过滤器
+
+vue.js对一些常见数据的文本进行格式化
+
+
+<div id="app">
+            <!--要过滤的数据 | 过滤器的名字-->
+            <h1>{{ money | RMB }}</h1>
+        </div>
+... ...
+<script type="text/javascript">
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                money:1000
+            },
+            //过滤器。对文本做一些格式化的输出
+            //value代表调用的那数据值
+            filters:{
+                RMB:function(value){
+                    if (value>100) {
+                        return value + '豪'
+                    } else{
+                        return value + '穷'
+                    }
+                }
+            }
+        });
+    </script>
+
+
+
+
+vue.js组件开发
+
+
+ES6语法
+
+ES6是JavaScript语言的最新版本
+
+变量申明let和const   同var声明变量：内部优化，性能更好
+
+
+	* let:声明的是一般变量 
+	* const:声明常量，不可修改的量
+
+
+
+
+<script type="text/javascript">
+        //声明变量
+        var num1 = 123;
+        let num2 = 123;
+        //声明常量
+        
+        //无法修改的常量
+        //const num3 = 123;
+        
+        num3 = 4546;
+        
+        //总结：以后使用变量建议使用let声明
+        
+        alert(num3);
+    </script>
+
+箭头函数   =>
+
+箭头函数的好处:1,语法简单 2,让this指向更明确
+
+
+    <script type="text/javascript">
+        //正常定义、调用函数
+//        let fnAlert = function(a,b){
+//            alert(a+b);
+//        }
+//        fnAlert(10,20)
+        
+        //ES6的箭头函数语法。两个值   无法预解析
+//        let fnAlert = (a,b) => {
+//            alert(a + b);
+//        }
+//        fnAlert(20,39);
+        
+        //一个值的语法
+//        let fnAlert = a => {
+//            alert(a)
+//        }
+//        fnAlert(100)
+        
+        //没有值的写法
+//        let fnAlert = () =>{
+//            alert('123')
+//        }
+//        fnAlert()
+        
+        var person = {
+            name:'tom',
+            age:'18',
+            showNmae:function(){
+                setTimeout(()=>{
+                    //相隔两个函数 this依然能选中数据
+                    alert(this.name);
+                },1000)
+            }
+        }
+        
+        person.showNmae()
+
+
+Vue组件
+
+组件：封装成一个代码块，给其他地方调用，也给代码块一个可改变的参数
+
+不带参数的组件
+
+<div id="app">
+            <!--使用组件-->
+            <ha></ha>
+</div>
+。。。。。。
+<script type="text/javascript">
+        //注册组件
+Vue.component('ha',{
+            template:'<div><a href="#">哈哈哈</a></div>'
+        })
+        
+        let vm = new Vue({
+            el:"#app"
+        })
+    </script>
+
+带参数的组件    面包屑
+
+
+<div id="app">
+            <!--调用的时候写上参数名字，就会随着改变-->
+            <ll news="体育"></ll><hr />
+            <ll news="娱乐"></ll>
+</div>
+... ...
+<script type="text/javascript">
+    Vue.component('ll',{
+        //定义一个可变的参数
+        props:['news'],
+        //用到可变参数的地方用{{参数}}
+        //template保存HTML结构
+        template:'<a href="#">网易首页  &gt;{{ news }} &gt;正文</a>'
+    })
+    let vm = new Vue({
+        el:'#app'
+    })
+</script>
+
+
+
+总结：
+
+
+//注册组件:
+<script type="type/javascript">
+    Vue.component('组件名称',{
+        props:['可变参数'],    //参数可有可无
+        template:'HTML结构(参数用胡子法写参数)'
+    });
+    let vm = new Vue({
+        el:'#app'
+    })
+</script>
+
+<!--使用组件：-->
+<div>
+    <组件名称 参数名="赋值"></组件名称>
+</div>
+
+
