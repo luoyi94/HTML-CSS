@@ -1,0 +1,462 @@
+HTML基础
+
+超文本标记语言，超指的是超链接，标记指的是标签。
+
+前端开发三大块：
+Html代码：主要控制网页的结构  超文本标注语言
+CSS代码：主要控制网页的外观   层叠样式表 <style>
+JS代码：主要控制网页的行为    JavaScript客户端脚本语言<script>
+
+请求的是：Html文件，Apache直接返回文件；。PHP文件，PHP程序来处理
+HTML简介
+HTML是一种规范，一直标准，编写网页的一种标准。
+用来显示网页的不同效果、不同部分。
+
+以下都是使用html5最新版本创建
+
+
+<!--DTD，告诉浏览器用的什么版本的HTML-->
+<!--下面的为H5版本-->
+<!DOCTYPE html>
+<html>
+    <!--head头部，里面能够放控制整个页面的内容-->
+    <head>
+        <!--字符集 编码解释-->
+        <meta charset="utf-8">
+        <!--网页标题-->
+        <title>网页标题</title>
+    </head>
+    <!--网站主题，所有用户看到的内容，都放在body中-->
+    <body>
+        网页显示的内容
+    </body>
+</html>
+
+1<html></html>标记含义：说明浏览器用什么格式（图片、视频）来编译。
+2<head></head>标记含义：说明浏览器使用什么字符集显示（GB2312简体中文、BIG5繁体中文 utf-8多国语言）
+3<body></body>显示内容，能看见。
+
+Html 标签格式
+
+1双边标记：由开始和结束标记组成，内容放在之间 <标签 属性1=”值1” 属性2=”值2”>内容</标签>    需要封闭
+2单边标记：只有开始标记，没有结束标记。<标签 属性1=”值1” 属性2=”值2”> 一般没有内容 </br> 特殊功能     自动封闭
+
+HTML 标签编写规范
+1不区分大小写
+2属性可有可无
+3标签可相互嵌套，顺序嵌套，一层套一层，不可交叉。
+
+<body>的常用属性
+Bgcolor:网页背景色  background：网页背景图片
+<b>加粗</b><i>斜体</i><u>下划线</u><s>删除线</s><sup>上标</sup><sub>下标</sub>
+文字标记：<font></font>属性：size文本大小1-7，1小，7大;Color:颜色;face字体（楷体、宋体）
+代码编辑器
+（1）Editplis、Notepad+_:软件较小，自动缩进，无法自动补齐
+（2）Dreamweaver、Zend studio:功能强大，自动补齐、php开发、检查错误、连接服务器
+HTML排版标记
+<p>段落</P>：属性align水平对齐 值：left左、center居中、right右
+<hr>水平线:属性Size粗细px像素为单位；color颜色；width宽度px/%；noshade出掉水平线阴影（在html中，没有属性值）
+<pre>预排版标记（保留文本格式）</pre>
+<h1>...<h6>标题标记 属性：align水平标记left,center,rigth
+
+<div>和<span>标记都要配合CSS使用
+块元素 不管内容多少，单独占一行
+<p>、<h1>、<pre>、<div>
+行内元素  根据内容决定，多个行内元素，会排在同一行
+<font>、<b>、<i>、<u>、<sub>、<sup>、<span>
+在标记嵌套时，一般是块元素套行内元素。
+
+HTML字符实体
+空格：&nbsp一个半角空格，一个字=2半角
+<小于:&lt；
+>大于:&gt；
+&和:&amp；
+¥人民币：&yen；
+×乘:&times；
+÷除:&divide；
+
+HTML项目符号 无顺序列表
+<ul>
+<li>内容1</li>
+<li>内容2</li>
+    ...........
+</ul>
+属性：type项目符号的类别，值：disc小黑点、circle空心圆、square实心方块
+内容应放在HTML标记中的最底层中
+
+HTML编号列表 有序列表
+<ol>
+<li></li>
+    <li></li>
+    <li></li>
+</ol>
+属性：type编号类型，值：1、a、A、i、I;
+start从第几个开始编号（数字）
+
+
+标签语义化
+
+在布局中需要尽量使用带语义的标签，使用带语义的标签的目的首先是为了让搜索引擎能更好地理解网页的结构，提高网站在搜索中的排名(也叫做SEO)，其次是方便代码的阅读和维护。
+带语义的标签
+1、h1~h6：表示标题
+2、p：表示段落
+3、img：表示图片
+4、a：表示链接
+
+不带语义的标签
+1、div：表示一块内容
+2、span：表示行内的一块内容
+
+
+滚动字幕标记<marquee>
+属性：Direction滚动方向，值：up、down、left、right
+Width:滚动宽度；Height:滚动高度；bgColor:滚动背景色；scrollAmount:滚动步值，值越大
+越快；scrollDelay:两步之间的停留时间，单位毫秒；loop:循环滚动的次数。
+
+
+图片标记 图文混排
+<img src=”相对网页路径” width=”宽度” heigh=”高度” border=”边框” align=”水平对齐” hspace 与文字之间的水平距离 vspace与文字垂直距离 title=”当鼠标移上去显示的文字” alt=” 当图片加载不出来，用文字代替”>
+src是引入图片的属性
+图片能够接收的格式：JPG PNG GIF...代码类的格式：SVG-
+鼠标移上去，显示title的文字
+
+
+标签分类
+1.    行内元素是没有宽高属性 并排显示。例如：a,span
+2.    块元素才有宽高属性,独占一行。例如：p,div,h1-h6
+3.    行内块显示模式。并排显示，有宽高属性。例如：表单类，img
+
+标签在网页中会显示成一个个的方块，先按照行的方式，把网页划分成多个行，再到行里面划分列，也就是在表示行的标签中再嵌套标签来表示列，整体按照先整体，后局部，先大后小的顺序来书写结构。标签在网页中会显示成一个个的方块，先按照行的方式，把网页划分成多个行，再到行里面划分列，也就是在表示行的标签中再嵌套标签来表示列，整体按照先整体，后局部，先大后小的顺序来书写结构。
+
+链接与表格
+
+超级链接（行内元素 块元素套行元素）
+<a 属性=“值”>.....</a>
+属性href:目标文件URL   远程访问http://www.baidu,com 本地访问file://E/文件绝对地址或者相对地址文件名   
+Target:目标文件的显示窗口 _blank新窗口打开 _self（默认）当前窗口替换 _parent：父级窗口打开 _top:顶级窗口打开   （如果为图片链接，img添加 alt:鼠标悬停在链接上的提示信息）
+属性name：定义锚点链接名称
+特殊链接
+下载文件链接：浏览器不能直接执行的会提示下载、另存窗口。
+邮箱链接：<a href=”mailto:收件邮箱名”>发送邮件</a>
+普通空连接：<a href=”#”>空</a>
+关闭窗口链接：< a href=”javascript:window.close()”>关闭窗口</a>
+HTML颜色表示方法
+三种：单词blue、green,red,yellow;10进制rgb(255,0,0),rgb(0,255,0),rgb(0,0,255);16进制#FF0000,#00FF00,#0000FF
+锚点链接
+锚点链接：在网页的不同区域进行跳转。定义锚点：<a name=”锚点名称(字母开头可以是字母数字下划线)”></a>   跳转到锚点：<a herf=”相对文件#锚点名称”>跳转</a>
+<meta>标记
+作用：提供网页的原信息，例如指定网页的搜索关键字。
+http-equiv属性：模拟http协议文件头信息，与content配合使用。功能：设置网页的字符集；网页自动刷新(<meta http-equiv=”refresh” content=”2”>每隔2秒自动刷新网页一次)；2秒后自动跳转到网页（<meta http-equiv=”refresh” content=”2秒”;url=”网站地址”>）
+Name属性：设置网页搜索的关键字keywords、版权信息、作者登、描述description。
+<table>表格标签
+结构<table>
+     <tr行>
+     <td列></td>
+     <td列></td>
+     <td列></td>
+     </tr>
+</table>
+属性：width宽度，height高度，border边框粗细，bordercolor边框颜色，bgcolor背景色，background背景图片，cellpadding填充距离，cellspacting表格间距，rules合并单元格边框,线取：all
+合并单元格外边距：cellspaction=”0”
+合并所有单元格边框：rules="all"       css:  border-collapse:collapse;
+
+<th>标题单元格自带文本加粗居中。
+<tr>属性（行标记）bigcolor行背景，height行高，align行中文本水平居中，valign垂直居中
+<td>或<th>属性 <td>普通单元格 rowspan上下单元格合并 colspan 左右单元格合并
+表格嵌套表格：只能在td中添加
+表格是不能使用padding和margin的，其余都可以。
+
+
+表单元素
+
+表单：主要来获取客户端用户信息，如：注册、查询、登录表单。
+<form>标记-块元素 定义整体的表单区域
+属性：name命名表单名称；mathod表单提交方式，取值get和post;action指定表单的处理程序(链接的PHP或者文件路径)；enctype表单数据编码方式加密
+Get方式：不能提交敏感数据，只能提交少量数据，限制大约100字符，不能上传附件。
+Post方式：直接传给表单处理程序，相对安全，可以提交大量数据，支持上传附件。
+<label>标签  
+为表单元素定义文字标注  如：前面加入用户名：、密码：等
+单行文本框
+<input type="text" 属性=”值”>
+属性：name文本框的名字。（包含字母、数字、下划线，只能字母开头）；type:表单元素的类型；value文本框的值；size文本框的长度，以字符为单位；maxLength最多输入多少字符。
+{嵌套<from><table>...</table></from>}readonly:只读（readonly=”readonly”）;disabled禁止输入（disable=”disable”）
+单行密码框
+<inout type="password" 属性=”值” />
+单选按钮
+<input typt="redio" 属性=”值” /> 两个单选按钮都写上同样的name，才能让选择唯一。
+属性：name元素名称；vlaue元素的值（发往服务器的值）；checked默认选择（checked=”checked”）
+复选框(一组选项，name值需一致)
+<input type="checkbox" 属性=”值” />
+属性：name元素名称；value元素的值；checked:默认选中（checked=”checked”）
+下拉列表
+<select name="名称"> <option value=”提交值”>选项内容</option> </select>
+属性：name    option属性：value,checked
+文本区域
+<textarea name=”名称” cols=”宽度” rows=”高度”>默认文本</textarea>
+属性：name命名；cols宽度，字符为单位
+resize:none
+按钮
+提交表单：<input type="submit" value=”提交表单”/>
+重置按钮：<input type="rest" value=”重新填写”/>
+图片按钮：<input type="image" scr=”图片路径”>
+普通按钮：<input type="button" value=”值”>配合JS程序发挥功能。
+上传文件域
+<input type="file" 属性= “值”/>
+属性：name表单元素;value表单元素上传的值；
+隐藏域
+<input type=”hidden” name=”名称” value=”默认值” />
+传递一些看不见的的值而建的框，用户PHP后台程序 例：修改新闻内容，需传递一个行文的ID号
+
+表格标题
+将标题与表格融为一体
+<table><caption>标题</caption><tr><td>内容</td></tr></table>
+
+
+框架
+
+
+图片热点
+一个图片只能加一个链接。
+标记结构
+<img src=”image/0.1jpg” usermap=”#map1”/>
+<地图定区map id=”map1”>
+  <area shape=”热区形状1” coords=”热区坐标1 href=”链接地址1” />
+  <area shape=”热区形状2” coords=”热区坐标2” href=”链接地址2” />
+  <area shape=”热区形状3” coords=”热区坐标3” href=”链接地址3” />
+  <area shape=”热区形状4” coords=”热区坐标4” href=”链接地址4” />
+</map>
+<area>标记属性
+Shape热区形状:rect矩形、cirele圆形、polygon多边形；coords执行区的坐标位置
+<area shape="rect" coords="坐标" href="javascript:alert('提示信息')">JS的一个函数，功能为弹出一个提示信息。
+普通框架
+框架：将一个浏览器划分若干个小窗口，每个小窗口显示一个独立的网页。
+应用框架的窗口：让网页在固定的框架窗口中显示<a href=”网页路径” target=”下叙窗口的name名字” >链接名字</a>
+（body默认是有8个像素的外边距，去掉：<styple type:”text/css”> body{ padding:0px;去掉body的四个边内填充距离 margin:0px;去掉body的四个外边距 }）
+框架集<frameset>:主要来划分窗口的。
+框架页<frame>:主要用来指定窗口默认显示的网页地址。
+<frameset><frame /></frameset>
+<frameset>属性：cols划分左右型框架（cols=”200,*”做框架宽度为200px,剩下的都是右框架的；180，*，180左右都为180px,剩下为中间框架；也可以用百分比来表示）；rows上下框架（同左右框架）；frameborder:是否显示框架的边框线。取值：1/0,yes/no；bordercolor边框颜色。
+<frame>框架页属性：src该窗口中默认显示网页地址；noresize不能调整该窗口的大小。（noresize=”noresieze”);scrolling是否显示滚动条，取：auto、yes、no；name该网页的名字
+<noframes>属性：当你的浏览器不支持框架时，提示的显示信息<noframes>提示信息</noframes>
+框架嵌套
+先划分上下框架，再划分左右框架。（1）框架结构的规划，不能出body标记，无内容（2）制作具体的页面
+内嵌框架（行内框架）在现有网页中，截取一个框，通过这个框可以看见里面的内容
+与普通框架的区别：<iframe>是<body>的子标签，所以它只能放在<body>中。
+<iframe></iframe>
+属性：src引入的文件位置(网页格式)；width框架的宽度；height框架的高度；frameborder是否显示框架的边框线；name该窗口的名称；align对齐方式；scrolling:是否显示滚动条。
+
+
+
+CSS基础
+
+css引入方式：
+
+css引入页面的方式有三种：
+
+1、内联式：通过标签的style属性，在标签上直接写样式。
+
+<div style="width:100px; height:100px; background:red ">......</div>
+2、嵌入式：通过style标签，在网页上创建嵌入的样式表。
+
+<style type="text/css">
+    div{ width:100px; height:100px; background:red }
+    ......
+</style>
+3、外链式：通过link标签，链接外部样式文件到页面中。
+
+<link rel="stylesheet" type="text/css" href="css/main.css">
+
+
+css选择器
+
+1，标签选择器
+div{color:red}      选择的元素为html中的标签，设置之后所有的标签都有对应的样式了。
+
+2，类选择器   class
+通过类名来选择，一个类可用于多个元素，一个元素也可以使用多个类（常见空格隔开）。
+.box{color:red;}   ... ...    <div class="box"></div>
+        
+3，层级选择器 
+应用与嵌套的结构中，先选中外层，空格，再选中内容元素
+.box h1{color:red;}   ... ... <div class="box"><h1></h1></div>
+
+4，id选择器
+通过id名来选择元素，元素的id名称不能重复，一个样式设置项只能对相应与页面上一个元素，不能复用，id名一般给程序使用，不建议使用id选择器
+#box{color:red;}   ... ...    <div id="box"></div>
+
+5，组选择器
+多个选择器，如果有同样的样式设置，可以使用组选择器。中间使用空格隔开
+
+6，伪类选择器
+常用的伪类选择器hover,表示鼠标悬浮在元素上的状态。
+.box1:hover{color:red;}
+
+
+
+
+
+CSS伪类选择器：
+(1)    超链接添加的样式：
+
+	* 1鼠标没放上去的正常状态(:link)
+	* 2鼠标放上去的状态(:hover)
+	* 3按下链接左键激活样式(:active)
+	* 4点击之后的访问过状态(:visited)
+
+
+去下划线text-decoration:none。
+
+(2)    去除项目符号：list-styple:列表样式，取值none.去掉项目符号或编号前面的那个点符号。
+
+(3)    边框：border-left左边框 值：粗细 线型（none无线soid实线dashed虚线dotted点状线）         线颜色 border-right右border-top上border-bootom下   border同时给四边加
+
+(4)    内边距：边框线到内容的距离      父子级别使用
+padding-left右内填充距离，左边线到内容间的距离    padding-right右 padding-top上padding-bottom下 
+padding四边。
+例子：padding:10px 20px;  上下为10px,左右为20px。
+padding:5px 10px 20px;上为5px 左右为10px 下为20px。        
+上右下左     
+
+(5)    外边距：边线往外的距离    兄弟级别使用
+margin-left左 margin-right右 margin-top上 margin-bottom下和上叙pading一样。   
+
+盒子的真实尺寸
+盒子的width和height值固定时，如果盒子增加border和padding，盒子整体的尺寸会变大，所以盒子的真实尺寸为：
+
+盒子宽度 = width + padding左右 + border左右
+盒子高度 = height + padding上下 + border上下
+
+
+块元素居中技巧
+块元素如果想设置相对页面水平居中，可以使用margin值中的auto关键字，“auto”只能用于左右的margin设置，不能用于上下的
+
+
+
+
+(6)    背景：
+background-color背景色;
+背景图片bacakground-image:url(images/bg.gif);
+背景平铺方式background-repeat(no-repeat不平铺、repeat-x水平方向、repeat-y垂直方向;
+背景定位backgrund-position:水平位置定位 垂直方向定位 （用英文单词定位：|left|center|right  |top|center|bottom|;
+固定值定位：5px 5px 背景距离容器的左边5px,容器顶端5px;用百分比定位：50% 50%水平、垂直居中；混合定位：背景色 背景图 平铺方式 是否定位）
+
+(7)    文本常用样式属性：
+
+color 设置文字的颜色，如： color:red;
+
+font-size 设置文字的大小，如：font-size:12px;
+
+font-family 设置文字的字体，如：font-family:'微软雅黑';为了避免中文字不兼容，一般写成：font-family:'Microsoft Yahei';
+
+font-weight 设置文字是否加粗，如：font-weight:bold; 设置加粗 font-weight:normal 设置不加粗
+
+line-height 设置文字的行高，如：line-height:24px; 表示文字高度加上文字上下的间距是24px，也就是每一行占有的高度是24px
+
+text-decoration 设置文字的下划线，如：text-decoration:none; 将文字下划线去掉
+
+text-align 设置文字水平对齐方式，如text-align:center 设置文字水平居中
+
+text-indent 设置文字首行缩进，如：text-indent:24px; 设置文字首行缩进24px
+
+样式中的注释
+/* 设置头部的样式 */
+
+
+
+全局样式设置：（标记含有共同的属性 统一处理） 外边距 内填充
+例：
+文本字体、大小
+body{font-size:14px;  font-family:宋体；color:#444;}  
+去掉内填充  外边距
+Html,body,h1,p{margin:0;  padding:0;}   
+链接操作样式
+a:link,a:visited{color:blue;text-decoration:none;}a:hover{color:red;}  
+去列表前面点
+ul,li,ol{list-stype:none;}  
+div在网页中居中对齐*      
+.div1{margin:距离上页面距离px auto;}  
+单行文字上下居中，设置行高为当前盒子的高相同
+.class1{link-height:30px;}       
+
+浮动：float让元素浮动，值：left左、right右、；clear:清除浮动，值:left 清除左浮、right      清除右浮动、both同时清除左右浮动
+浮动的元素：1将向左或向右浮动，浮动到保卫元素的边上，或上一个浮动元素的的边    上位置。2不再占有空间了，并且，浮动元素的层要高于普通元素。2一定是“块元素”，    不论它原来是什么元素。
+浮动的功能：可以实现将多个块元素并列排版。
+清除浮动功能：让内容保卫浮动元素，需在元素采用清除浮动标记。
+继承：外层元素的样式，会被内存元素进行继承。多个外层元素的样式，最终都会“叠加”    内存元素上；文本属性都会被继承：color size family style weight align decoration ...;body    的属性会被所有的子元素继承。
+
+
+优先级：
+1单个选择器：行内样式>id选择器>class选择器>类选择器
+
+2多个选择器：指向越准确，优先级越高；特殊情况下，假设一些值：标签选择器 优先级1   类选择器优先级10  ID选择器优先级为100 行内样式 优先级1000.
+
+
+相对定位和绝对定位
+
+网页上引入或链接到外部文件，需要定义文件的地址，常见引入或链接外部文件包括以下几种：
+
+<!-- 引入外部图片   -->
+<img src="images/001.jpg" alt="图片" />
+
+<!-- 链接到另外一个网页   -->
+<a href="002.html">链接到网页2</a>
+
+<!-- 外链一个css文件   -->
+<link rel="stylesheet" type="text/css" href="css/main.css" />
+
+<!-- 外链一个js文件   -->
+<script type="text/javascript" src="js/jquery.js"></script>
+这些地址分为相对地址和绝对地址:
+
+相对地址 
+相对于引用文件本身去定位被引用的文件地址，以上的例子都是相对地址，相对地址的定义技巧：
+
+“ ./ ” 表示当前文件所在目录下，比如：“./pic.jpg” 表示当前目录下的pic.jpg的图片，这个使用时可以省略。
+
+“ ../ ” 表示当前文件所在目录下的上一级目录，比如：“../images/pic.jpg” 表示当前目录下的上一级目录下的images文件夹中的pic.jpg的图片。
+
+绝对地址   从根目录去定位地址
+相对于磁盘的位置去定位文件的地址，比如：<img src="C:\course5\03day\images\001.jpg" alt="图片" /> 绝对地址在整体文件迁移时会因为磁盘和顶层目录的改变而找不到文件，相对地址就没有这个问题。
+
+CSS定位
+
+
+Display功能：规则网页元素如何显示的问题。取值：none隐藏、block以块元素显示 实现行内元素转为块元素、inline以行内元素显示 实现块元素转为行内元素。
+
+当元素显示超出：
+Overflow:auto;滚动条 visibl;e默认超出部分显示  hidden;超出部分截掉、隐藏。  /溢出的内容如何显示/
+
+Cursor网页中光标的显示类型。取值pointer手型、wait等待、help帮助、text文本
+
+定位：position元素定位方式，取值:static静态默认定位、fixed固定定位、relative相对定位、    absolute绝对定位。
+定位坐标：指定定位的元素，偏移目标元素多远的距离。
+
+固定定位position:fixed，相对与浏览器窗口定位；不占空间，层数高于普通元素；不指定位        置，元素原地不变；{position:fixed;left:0px;top：0px;定位到浏览器的做上角}
+
+相对定位position:relative;相对于初始位置定位;依然占空间，层级高于普通元素；
+
+*绝对定位position:absolute,相对于父元素定位来进行的，原来地方不占位置，可以设置宽高。
+解决因为分辨率不同而导致位置改变问题：子绝父相 父增加相对定位属性 子就相对于父类元素定位
+
+
+
+
+引入CSS方式  嵌入式：通过<style>标记<style type=”text/css”></style> 只能给当前网页来使        用；同一个网页中<style>多次使用
+外联式通过<lin>标记，引入一个外部的css文件，以实现公共的CSS代码被多个网页共享<link rel=”stylesheet” type=”text/css” href=”css/pubilc.css” />
+<link>属性：rel引入的文件类型。取值：stylesheet type:内容类型 href:引入的CSS文件地址。
+<link>标记放在<head>中， 同一个网页，可以使用多个<link>来链入多个外部样式表文    件。在CSSwe文件中，不能出现HTML标记 全部都是CSS的属性样式。
+行内式（主要用于Js控制元素的样式）：每一个HTML标记，都有一些公共的属性class id tile style   HTML标记中的style属性值，与css样式一模一样。优先级最高。
+
+CSS表格属性：border-collapse表格边框线合并，取值：collapse。
+盒子模型： 上下外边距合并问题--这是一种现象  上下两个块元素，如果每一个元素都指定了四个外边距那么上下相邻的那个外边距会发生合并的现象，和并之后取其中较大的外边距
+盒子模型设置的元素的border padding margin属性，不包括float
+
+
+排版的准备工作：网站的背景色、背景图。创建css文件，并引入到HTML文件中。
+同一个class属性，可以指定多个类名样式，中间用空格隔开<div class=”class1 class2”>
+兼容性
+兼容性调试IE8、IE6、IE6、Firefox
+IE5.5下主页居中代码：body{text-align:center;}
+添加不同符号，用于分辨不同的浏览器：“*”IE6个IE7都识别（.box{*background-colored;}）
+“_”只有IE6识别。(_box{_background-color:green;})
+
