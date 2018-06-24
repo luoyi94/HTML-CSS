@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>今日头条结构布局</title>
+		<style>
+			.big-box{
+				margin: 20px auto;
+				
+				width: 285px;
+				height: 310px;
+				border-top: #c8dcf2 1px solid;
+				border-bottom: #C8DCF2 1px solid;
+				
+			}
+			.big-box .title-box{
+				height: 40px;
+				line-height: 40px;
+			}
+			.big-box .title-box h3{
+				font-weight: normal;
+				font-family: "微软雅黑";
+				font-size: 16px;
+				color: #172c45;
+				float: left;
+				/*background: red;*/
+				/*width: auto;*/
+				margin: 0px;
+			}
+			.big-box .title-box a{
+				font-family: "微软雅黑";
+				font-size: 12px;
+				color: #172C45;
+				text-decoration: none;
+				float: right;
+				/*background: blue;*/
+				/*width: auto;*/
+				margin: 0px;
+			}
+			.big-box img{
+				height: 80px;
+			}
+			.big-box p{
+				font-family: "微软雅黑";
+				font-size: 12px;
+				color: #737373;
+				line-height: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<!--最大的模块，把所有的内容都放到div中-->
+		<div class="big-box">
+			<div class="title-box">
+				<!--放今日头天标题的盒子-->
+				<h3>今日头条</h3>
+				<a href="#">更多>></a>
+			</div>
+			<div>
+				<!--放图片的盒子-->
+				<img src="banner.jpg">
+			</div>
+			<div>
+				<!--放文字内容的盒子-->
+				<p>
+					标签在网页中会显示成一个个的方块，先按照行的方式，把网页划分成多个行，再到行里面划分列，也就是在表示行的标签中再嵌套标签来表示列，整体按照先整体，后局部，先大后小的顺序来书写结构。标签在网页中会显示成一个个的方块，先按照行的方式，把网页划分成多个行，再到行里面划分列，也就是在表示行的标签中再嵌套标签来表示列，整体按照先整体，后局部，先大后小的顺序来书写结构。
+				</p>
+			</div>
+			
+			
+		</div>
+	</body>
+</html>
