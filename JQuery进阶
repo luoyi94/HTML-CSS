@@ -1,0 +1,282 @@
+jquery特殊效果
+
+例子：选中按钮对应功能操作img效果
+括号内的为多少毫秒内完成操作
+
+fade淡入/淡出
+
+	1. fadeIn()淡出
+	2. fadeOut() 淡出
+	3. fadeToggle() 切换淡入淡出
+
+
+
+
+
+//单个功能 In/Out
+$('input[value="淡入"]').click(function(){
+    //淡入  选择对象.fadeIn(毫秒,淡出属性,改变的操作)   
+    //属性默认为swing  还有一个匀速：linear
+    $('img').fadeIn(1000);
+});
+                
+$('input[value="淡出"]').click(function(){
+    //单个隐藏功能  fadeOut
+    $('img').fadeOut(1000)
+})
+                
+//两个功能
+$('input[value="淡入/淡出"]').click(function(){
+    //既可以显示，也可以隐藏
+    $('img').fadeToggle(800);
+})
+
+直接显示/隐藏    实质：操作元素的display:none隐藏/block显示
+	1. hide() 隐藏元素
+	2. show() 显示元素
+	3. toggle() 切换元素的可见状态
+
+
+此方法快捷选中display属性进行操作    
+
+
+
+//单个显示/隐藏
+$('input[value="隐藏"]').click(function(){
+    //单个隐藏功能  fide();
+    $('img').fide();
+});
+$('input[value="显示"]').click(function(){
+    //单个显示功能  show();
+    $('img').show();
+});
+$('input[value="显示/隐藏"]').click(function(){
+    //既可以显示，也可以隐藏  toggle()
+    $('img').toggle();
+})
+
+	* slideDown() 向下展开
+	* slideUp() 向上卷起
+	* slideToggle() 依次展开或卷起某个元素
+
+
+
+
+//单个向下展开功能
+$('input[value="向下展开"]').click(function(){
+    $('img').slideDown(1000);
+});
+        
+//单个向上卷起功能
+$('input[value="向上卷起"]').click(function(){
+    $('img').slideUp(1000);
+});
+        
+//卷起和展开两个功能
+$('input[value="展开/卷起"]').click(function(){
+    $('img').slideToggle(1000,'linear');
+});
+
+拓展：让图片从下到上动画消失效果 （不变形）   --视觉欺骗 
+原理：创造一个相同大小的div   并且背景颜色和网页颜色一样  点击之后让它的从下面在多少秒之内覆盖住整个图片
+
+
+$('input[value="动画"]').click(function(){
+    //div标签的元素为一个背景颜色和网页一样  宽高和图片一样的div
+    //div定位在图片下面  50为 图片离网页上面的高度  刚好重合
+    $('div').stop().animate({
+        'top':'50'
+    },1000,'linear');
+});
+
+
+jquery链式调用
+
+jquery对象的方法会在执行完后返回这个jquery对象，所有jquery对象的方法可以连起来写
+
+
+$('#div1') // id为div1的元素
+.children('ul') //该元素下面的ul子元素
+.slideDown('fast') //高度从零变到实际高度来显示ul元素
+.parent()  //跳到ul的父元素，也就是id为div1的元素
+.siblings()  //跳到div1元素平级的所有兄弟元素
+.children('ul') //这些兄弟元素中的ul子元素
+.slideUp('fast');  //高度实际高度变换到零来隐藏ul元素
+
+
+jquery属性操作
+
+.html()     取出或设置html内容
+
+
+// 取出html内容   赋给变量$htm
+
+var $htm = $('#div1').html();   
+
+// 设置html内容   将id名为div1的元素网页内容设置为括号内容
+
+$('#div1').html('<span>添加文字</span>');
+
+.prop()      取出或设置某个属性的值
+
+
+//获取属性   对象.prop(属性名)  由一个变量接收
+
+var $src = $('#img1').prop('src');    //取出图片的地址
+
+//设置属性    对象.prop({设置的内容})
+
+$('input').prop({'value':'开始倒计时'});       // 设置按钮的value的值为括号的
+
+
+.val()        按钮获取value值 可以简写：
+
+
+var oInput = $('input').val()   //获取value值赋给变量
+
+$('input').val('开始倒计时')    //设置value值
+
+
+//文本过多时，控制滚动条 自动到最后.scrollTop()  括号表示离滚动条最上端的距离
+
+
+$('input[type="text"]').scrollTop('9999999')  让滚动条总在最下面
+
+jquery焦点事件
+
+事件函数列表：
+
+
+	* blur() 元素失去焦点
+	* focus() 元素获得焦点
+	* click() 鼠标单击
+	* mouseover() 鼠标进入（进入子元素也触发）
+	* mouseout() 鼠标离开（离开子元素也触发）
+	* mouseenter() 鼠标进入（进入子元素不触发）
+	* mouseleave() 鼠标离开（离开子元素不触发）
+	* hover() 同时为mouseenter和mouseleave事件指定处理函数
+	* ready() DOM加载完成   入口函数功能
+	* submit() 用户递交表单
+
+
+
+
+//获得焦点   一个页面只能有一个焦点  只有一个光标输入
+$('input').focus()    
+
+//获得焦点事件   鼠标在元素中获得焦点 就让它执行function()函数
+$('input').focus(function(){
+    $('this').css({'border':'5px solid red'});
+});
+
+
+//$(目标源).hover(鼠标进入,鼠标离开)
+//例子：选中图片让自己显示，别人都变为0.1的透明度
+$('img').hover(function(){
+    //.opacity改变透明度  0.1表示10%的透明度
+    $('this').sibings().stop().animate({'opacity':'0.1'},1000);
+},function(){
+    $('img').stop().animate({'opacity':'1'},1000);
+}
+);
+
+
+//.is(':checked')   判断复选框是否被选中  返回布尔值
+
+
+//.submit() 提交事件
+$('form').submit(function(){
+    判断是否提交
+    return false;  不提交
+    return true;    提交
+});  
+
+
+
+表单验证   正则
+
+
+1、什么是正则表达式：
+能让计算机读懂的字符串匹配规则。
+
+2、定义正则表达式的写法：
+
+var re=new RegExp('规则', '可选参数');
+
+var re=/规则/参数;    常用
+
+3、规则中的字符
+1）普通字符匹配：
+如：/a/ 匹配字符 ‘a’，/a,b/ 匹配字符 ‘a,b’
+
+2）转义字符匹配：
+
+	* \d 匹配一个数字，即0-9
+	* \D 匹配一个非数字，即除了0-9
+	* \w 匹配一个单词字符（字母、数字、下划线）
+	* \W 匹配任何非单词字符。等价于[^A-Za-z0-9_]
+	* \s 匹配一个空白符
+	* \S 匹配一个非空白符
+	* \b 匹配单词边界
+	* \B 匹配非单词边界
+	* . 匹配一个任意字符
+
+
+
+
+var sTr01 = '123456asdf';
+var re01 = /\d+/;
+//匹配纯数字字符串
+var re02 = /^\d+$/;
+alert(re01.test(sTr01)); //弹出true
+alert(re02.test(sTr01)); //弹出false
+
+4、量词：对左边的匹配字符定义个数
+
+	* ? 出现零次或一次（最多出现一次）
+	* + 出现一次或多次（至少出现一次）
+	* * 出现零次或多次（任意次）
+	* {n} 出现n次
+	* {n,m} 出现n到m次
+	* {n,} 至少出现n次
+
+
+
+5、任意一个或者范围
+[abc123] : 匹配‘abc123’中的任意一个字符
+[a-z0-9] : 匹配a到z或者0到9中的任意一个字符
+
+6、限制开头结尾
+^ 以紧挨的元素开头
+$ 以紧挨的元素结尾
+
+7、修饰参数：
+g： global，全文搜索，默认搜索到第一个结果接停止
+i： ingore case，忽略大小写，默认大小写敏感
+
+8、常用函数
+
+test
+用法：正则.test(字符串) 匹配成功，就返回真，否则就返回假
+
+正则默认规则
+匹配成功就结束，不会继续匹配，区分大小写
+
+常用正则规则
+
+//用户名验证：(数字字母或下划线6到20位)
+
+var reUser = /^\w{6,20}$/;
+
+//邮箱验证：        
+
+var reMail = /^[a-z0-9][\w\.\-]*@[a-z0-9\-]+(\.[a-z]{2,5}){1,2}$/i;
+
+//密码验证：
+
+var rePass = /^[\w!@#$%^&*]{6,20}$/;
+
+//手机号码验证：
+
+var rePhone = /^1[34578]\d{9}$/;
+
