@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div>
+			<h1>我是div中的h1</h1>
+			<span>
+				<a href="#">我是div中的span中的a</a>
+			</span>
+			<h2 class="red">我是div中的h2</h2>
+			<h2>我也是div中的h2</h2>
+			<h2>我还是div中的h2</h2>
+		</div>
+	</body>
+	<script type="text/javascript">
+		//.children()选择所有子级。
+		//如果括号中加某个子级，就直接选中该子级
+//		$('div').children().css({'color':'red'});  //选中div中所有的下一级
+//		$('div').children('h1').css({'color':'blue'});   //选中div所有下级中的h1
+		
+		//.siblings()选择所有的兄弟
+//		$('h1').siblings().css({'color':'green'});   // 选中的中间没有自己本身
+
+		//.parent() 选择父级
+//		$('.red').parent().css({'background':'gold'});  //此处选择的是.red所在标签的父级  即：div
+		
+		//.find()选择所有括号选中子级，
+		$('div').find('h2').css({'color':'red'});   // 选中所有的div所有子级中的h2
+		
+	</script>
+</html>

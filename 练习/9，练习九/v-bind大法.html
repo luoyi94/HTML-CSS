@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="vue.min.js" ></script>
+	</head>
+	<body>
+		<a v-bind:href="url" v-bind:title="baidu">百度</a>
+	</body>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el:'a',
+			data:{
+				url:'http://www.baidu.com',
+				baidu:'baidu'
+			}
+		});
+	</script>
+</html>

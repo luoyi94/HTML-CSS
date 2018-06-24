@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>相对定位</title>
+		<style>
+			.box{
+				width: 590px;
+				height: 470px;
+				margin: 50px auto;
+				border: 5px solid black;
+				position: relative;
+			}
+			.div1{
+				border: 0;
+				width: 50px;
+				height: 80px;
+				background: rgba(0,0,0,0.2);
+				color: white;
+				line-height: 80px;
+				text-align: center;
+				font-size: 30px;
+				position: absolute;
+				left: 0px;
+				top: 50%;
+				margin-top: -40px;
+				cursor: pointer;
+			}
+			.div2{
+				border: 0;
+				width: 50px;
+				height: 80px;
+				background: rgba(0,0,0,0.2);
+				color: white;
+				line-height: 80px;
+				text-align: center;
+				font-size: 30px;
+				position: absolute;
+				right: 0px;
+				top: 50%;
+				margin-top: -40px;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<img src="jd.jpg">
+			<form action="lu.jpg">
+			<input type="submit" value="<" class="div1">
+			<input type="submit" value=">" class="div2">
+			</form>
+		</div>
+	</body>
+</html>

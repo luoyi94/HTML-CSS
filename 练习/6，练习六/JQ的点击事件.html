@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			div{
+				width: 300px;
+				height: 300px;
+				background: blue;
+			}
+		</style>
+		<script type="text/javascript">
+			$(function(){
+				//语法格式：
+				//$('点击源').click(function(){点击要执行的代码})
+				$('div').click(function(){
+					//this谁调用事件就是在指谁   不用带上引号
+					$(this).css({'background':'green'});
+				});
+			})
+		</script>
+	</head>
+	<body>
+		<div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+	</body>
+	<script type="text/javascript">
+		// 在函数内部定义的为局部变量只能在内部使用
+		// 全局定义的变量共享于任何一个作用域
+		// 某一个地方改变了这个变量，后面的地方就使用改变后的变量
+		// var tv为定义变量
+		// 后面的 tv = 为改变变量
+		
+		var tv = '好电视';
+
+		function one() {
+			tv = '坏电视';
+			alert(tv);
+		}
+
+		function two() {
+			alert(tv);
+		}
+
+		one();  //弹出：坏电视
+		two();	//弹出：坏电视
+	</script>
+
+</html>

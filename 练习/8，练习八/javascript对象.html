@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		//通过顶级Object类 实例化一个对象
+//		var person = new Object();
+//		//添加属性
+//		person.name = 'ly';
+//		person.age = '18';
+//		
+//		person.sayName = function(){
+//			alert(this.name);
+//		}
+//		
+//		alert(person.age);  // 调用属性
+//		person.sayName();
+
+		//通过对象直接量的方式创建对象
+		var person2 = {
+			name:'ll',
+			age:'20',
+			sayName:function(){
+				alert('my name is '+ this.name);
+			}
+		}
+		
+		alert(person2.age);
+		person2.sayName();
+	</script>
+</html>

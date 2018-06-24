@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>注册表单</title>
+		<style>
+			*{
+				margin: 0px;
+				padding: 0px;
+				border: 0;
+			}
+			body{
+				background: #00ccff;
+			}
+			
+			.box:hover{
+				/*background: gold;*/
+			}
+			.box .title h2:hover{
+				color: gold;
+			}
+			
+			.box{
+				width: 430px;
+				height: auto;	/*513*/
+				background: white;
+				margin: 20px auto;
+				padding: 13px 34px 24px 36px;
+			}
+			.box .title{
+				/*文本垂直居中：设置行高和盒子高度一样*/
+				height: 48px;
+				line-height: 48px;
+				width: 430px;
+				border-bottom: 1px solid #dddddd;
+			}
+			.box .title h2{
+				color: #ff9966;
+				font-weight: normal;
+			}
+			.box table{
+				margin-top: 21px;
+				padding-right: 10px;
+				/*background: blue;*/
+				border-collapse: collapse;
+			}
+			.box table .left{
+				line-height: 40px;
+				text-align: right;	
+				/*background: red;*/
+				padding-bottom: 25px;
+			}
+			.box table .left:hover{
+				color: gold;
+			}
+			.box table .left1{
+				/*background: pink;*/
+				padding-bottom: 59px;
+			}
+			.input1{
+				width: 330px;
+				height: 40px;
+				margin-bottom: 25px;
+				border: 1px solid #dddddd;
+				padding-left: 10px;
+			}
+			.textarea{
+				width: 332px;
+				height: 73px;
+				resize: none;
+				border: 1px solid #dddddd;
+				padding-left: 10px;
+			}
+			
+			.box table .left2{
+				padding-top: 32px;
+				/*background: red;*/
+			}
+			.box table .left2 span{
+				margin-left: 15px;
+			}
+			tr{
+				/*background: red;*/
+			}
+			.left3{
+				padding-top: 29px;
+			}
+			.sub{
+				width: 330px;
+				height: 38px;
+				background: #00ccff;
+				border: 0;
+				color: white;
+				font-size: 20px;
+				letter-spacing: 14px;
+				font-weight: bold;
+			}
+			
+			.sub:hover{
+				background-image: url(banner1.jpg);
+				background-repeat: no-repeat;
+			}
+			input:hover{
+				background: #00ccff;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div class="title">
+				<h2>注册表单</h2>
+			</div>
+			<form action="py1.py" method="post">
+			<table>
+				<tr>
+					<td class="left">用户名：</td>
+					<td><input type="text" class="input1" placeholder="请输入你的用户名!"></td>
+				</tr>
+				<tr>
+					<td class="left">密码：</td>
+					<td><input type="password" class="input1" placeholder="请输入你的密码!"></td>
+				</tr>
+				<tr>
+					<td class="left">确认密码：</td>
+					<td><input type="password" class="input1" placeholder="请重新输入上叙密码!"></td>
+				</tr>
+				<tr>
+					<td class="left">邮箱：</td>
+					<td><input type="text" class="input1" placeholder="请输入邮箱!"></td>
+				</tr>
+				<tr>
+					<td class="left1">个人简介：</td>
+					<td><textarea class="textarea" placeholder="请输入您的个人简介！"></textarea></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td class="left2"><input type="checkbox"><span>同意用户使用协议</span></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td class="left3"><input type="submit" value="注册" class="sub"></td>
+				</tr>
+			</table>
+			</form>
+		</div>
+	</body>
+</html>

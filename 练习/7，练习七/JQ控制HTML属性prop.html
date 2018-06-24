@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<input type="button" value="获取验证码" />
+	</body>
+	<script type="text/javascript">
+		$('input').click(function(){
+			//获取属性   对象.prop(属性名)  由一个变量接收
+//			alert($(this).prop('value'));
+			//如果只是获取按钮的value值  JQ有一个简单的单独的方法
+			//对象.val()    即可获取
+//			alert($(this).val());
+			
+			//设置属性  对象.prop({该表的内容})
+//			$(this).prop({'value':'开始倒计时'});
+			//简写
+			$(this).val('开始倒计时');
+		});
+	</script>
+</html>

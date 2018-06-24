@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>todolist</title>
+	<style type="text/css">
+		.list_con{
+			width:600px;
+			margin:50px auto 0;
+		}
+		.inputtxt{
+			width:550px;
+			height:30px;
+			border:1px solid #ccc;
+			padding:0px;
+			text-indent:10px;			
+		}
+		.inputbtn{
+			width:40px;
+			height:32px;
+			padding:0px;
+			border:1px solid #ccc;
+		}
+		.list{
+			margin:0;
+			padding:0;
+			list-style:none;
+			margin-top:20px;
+		}
+		.list li{
+			height:40px;
+			line-height:40px;
+			border-bottom:1px solid #ccc;
+		}
+
+		.list li span{
+			float:left;
+		}
+
+		.list li a{
+			float:right;
+			text-decoration:none;
+			margin:0 10px;
+		}
+	</style>
+	<script src="jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$(function(){
+			//1,点击 增加功能
+			$('#btn1').click(function(){
+				var Text = $('#txt1').val()   // 文本内容
+				var oLi = '<li><span>'+Text+'</span><a href="javascript:;" class="up"> ↑ </a><a href="javascript:;" class="down"> ↓ </a><a href="javascript:;" class="del">删除</a></li>'
+				if(Text == ''){
+					alert('不能为空')
+					return;
+				}
+				
+				$('#list').append(oLi);   // 在最后面追加数据
+				$('#txt1').val('');
+				$('#txt1').focus();
+			});
+			
+			//点击删除  则删除对应的li
+			//因为获取的是事件源 是动态添加  所以要委托给父级
+			$('#list').delegate('.del', 'click', function(){
+				$(this).parent().remove();								
+			});
+			
+			//向上移动
+			$('#list').delegate('.up', 'click', function(){	
+				//到顶判断索引值是否为0  
+				if($(this).parent().index()== 0){
+					alert('到顶了')
+					return;
+				}
+				//$(this).parent().prev()  //当前父类的前面的同级元素
+				//$(this).parent()   当前父类
+				$(this).parent().prev().before($(this).parent());			
+			});
+			//向下移动
+			$('#list').delegate('.down', 'click', function(){				
+				//到底判断索引值是否等于li的长度-1
+				if($(this).parent().index() == $('li').length-1){
+					alert($('#list').length);
+					return;
+				}
+				//$(this).parent().prev()  //当前父类的前面的同级元素
+				$(this).parent().next().after($(this).parent());			
+			});
+			
+		});
+	</script>	
+</head>
+<body>
+
+	<div class="list_con">
+	<h2>To do list</h2>
+		<input type="text" name="" id="txt1" class="inputtxt">
+		<input type="button" name="" value="增加" id="btn1" class="inputbtn">
+		
+		<ul id="list" class="list">
+
+			<li><span>学习html</span><a href="javascript:;" class="up"> ↑ </a><a href="javascript:;" class="down"> ↓ </a><a href="javascript:;" class="del">删除</a></li>
+			<li><span>学习css</span><a href="javascript:;" class="up"> ↑ </a><a href="javascript:;" class="down"> ↓ </a><a href="javascript:;" class="del">删除</a></li>
+			<li><span>学习javascript</span><a href="javascript:;" class="up"> ↑ </a><a href="javascript:;" class="down"> ↓ </a><a href="javascript:;" class="del">删除</a></li>
+
+		</ul>
+
+	</div>
+</body>
+</html>

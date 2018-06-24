@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		//ajax是JQ获取数据库内容的一种常见方式
+		//与网页请求服务器打开文件文件逻辑相同  只是打开的文件为json
+		
+		//旧式写法
+		$.ajax({
+			//请求的地址   路径下
+			url:'myJson.json',
+			//获取或者提交的方式
+			type:'get',
+			//数据的格式  文件后缀
+			dataType:'json',
+			//成功后执行的命令
+			//如果要读取文件的数据，必须要在function中加入一个形参
+			//形参名没有规定的，只要和下面使用的相同就行了）
+			success:function(data){
+				//取出该文件字典中的key为name的值
+				alert(data.name);  
+			},
+			//读取失败后执行的命令
+			error:function(data){
+				alert('读取数据失败');
+			}
+		});
+
+		//新式写法
+//		$.ajax({
+//			url:'myJson.json',
+//			type:'get',
+//			dataType:'json'
+//		})   //中间的不带分号  以便后面使用点.链式编程
+//		.done(function(data){
+//			//成功之后执行命令  （done完成了）
+//			alert(data.name);
+//		})
+//		.fail(function(){
+//			//失败之后执行的命令   （fail失败）
+//			alert('失败了');
+//		});
+	</script>
+</html>

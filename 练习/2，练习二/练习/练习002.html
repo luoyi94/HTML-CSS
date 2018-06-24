@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>表格</title>
+		<style>
+			*{
+				margin: 0px;
+				padding: 0px;
+			}
+			table{
+				margin: 50px auto;
+				width: 650px;
+				height: 250px;
+				text-align: center;
+				border: 1px solid #dddddd;
+			}
+			td{
+				color: #707171;
+				/*border: 0.5px solid #dddddd;*/
+				
+			}
+			th{
+				background: #53a0ce;
+				color: white;
+			}
+			.one{
+				background: #eaf4f3;
+			}
+			.left{
+				text-align:left;
+				text-indent: 2em;
+			}
+			.age-width{
+				width: 120px;
+			}
+		</style>
+	</head>
+	<body>
+		<table rules="all"><!--合并单元格边框-->
+			<tr>
+				<th>NAMA</th>
+				<th class="age-width">AGE</th>
+				<th>GENDER</th>
+				<th>HEIGHT</th>
+			</tr>
+			<tr class="one">
+				<td class="left">Jill Smith</td>
+				<td>25</td>
+				<td>Female</td>
+				<td>175</td>
+			</tr>
+			<tr>
+				<td class="left">John Stone</td>
+				<td>30</td>
+				<td>Male</td>
+				<td>179</td>
+			</tr>
+			<tr class="one">
+				<td class="left">Jan Strip</td>
+				<td>29</td>
+				<td>Female</td>
+				<td>165</td>
+			</tr>
+			<tr>
+				<td class="left">Gary Mountain</td>
+				<td>21</td>
+				<td>Male</td>
+				<td>180</td>
+			</tr>
+			<tr class="one">
+				<td class="left">James Camera</td>
+				<td>31</td>
+				<td>Male</td>
+				<td>185</td>
+			</tr>
+		</table>
+	</body>
+</html>

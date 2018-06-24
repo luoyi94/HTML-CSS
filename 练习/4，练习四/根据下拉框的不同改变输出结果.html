@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			window.onload = function(){
+				var oSel = document.getElementById('sel');
+				var oBtn = document.getElementById('btn');
+				var oText = document.getElementById('text0');
+				var oH1 = document.getElementById('h1');
+	
+				oBtn.onclick = function(){
+					
+					//需求：点击设置按钮，把文本框的内容添加到h1的HTML内容
+					oH1.innerHTML = 'your name is：' + oText.value;
+					
+					//需求：点击按钮  弹出下拉列表中的选择
+					if (oSel.value == "1") {
+						alert("大班")
+					} else if(oSel.value == "2"){
+						alert("中班")
+					}
+					 else if(oSel.value == "3"){
+						alert("小班")
+					}else{
+						oH1.innerHTML = 'your name is：' + '小小班'+ oText.value + '&nbsp;小童鞋';
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<select id="sel">
+			<!--下拉框的value是用于JS判断的作用-->
+			<option value="1">大班</option>
+			<option value="2">中班</option>
+			<option value="3">小班</option>
+			<option value="4">小小班</option>
+		</select>
+		<input type="text" name="text0" id="text0" value="" placeholder="你的名字"/>
+		<input type="button" name="btn" id="btn" value="点击" />
+		<h1 id="h1">your name is：</h1>
+	</body>
+</html>

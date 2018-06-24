@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="vue.min.js" ></script>
+	</head>
+	<body>
+		<div id="app">
+			<ul>
+				<!--渲染的是对象格式：v-for = "(参数值,参数名) in 对象"-->
+				<li v-for="(value,key) in list">{{key}} ： {{value}}</li>
+			</ul>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				list:{
+					name:'tom',
+					age:18
+				}
+			}
+		})
+	</script>
+</html>

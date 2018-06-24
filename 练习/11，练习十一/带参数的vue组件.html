@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="vue.min.js" ></script>
+	</head>
+	<body>
+		<div id="app">
+			<!--调用的时候写上参数名字，就会随着改变-->
+			<ll news="体育"></ll><hr />
+			<ll news="娱乐"></ll>
+		</div>
+	</body>
+<script type="text/javascript">
+	Vue.component('ll',{
+		//定义一个可变的参数
+		props:['news'],
+		//用到可变参数的地方用{{参数}}
+		//template保存HTML结构
+		template:'<a href="#">网易首页  &gt;{{ news }} &gt;正文</a>'
+	})
+	let vm = new Vue({
+		el:'#app'
+	})
+</script>
+</html>

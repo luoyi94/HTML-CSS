@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.father{
+				width:300px;
+				height:300px;
+				background:pink;
+			}
+			.son1{
+				height:40px;
+				background:green;
+				margin-top:50px;
+			}
+			.son2{
+				height:40px;
+				background:yellow;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			带着父亲跑的出现场景：当第一排子元素，设置了上外边距，就会带着父亲跑
+		-->
+		<div class="father">
+			<div class="son1"></div>
+			<div class="son2"></div>
+		</div>
+	</body>
+</html>

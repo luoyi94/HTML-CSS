@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="vue.min.js" ></script>
+		<script type="text/javascript">
+			window.onload = function(){
+				var vm = new Vue({
+					el:'#app',
+					data:{
+						ok:0
+					}
+				})
+			}
+		</script>
+	</head>
+	<body>
+		<div id="app">
+			<!--通过点击按钮改变自定义参数的值-->
+			<input type="button" value="按钮" @click="ok=1" />
+			<!--输出内容为一个判读输出的内容-->
+			{{ ok==0?'显示':'隐藏' }}
+		</div>
+	</body>
+</html>

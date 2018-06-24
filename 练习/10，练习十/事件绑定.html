@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="vue.min.js" ></script>
+	</head>
+	<body>
+		<div id="app">
+			<input type="button" value="按钮" @click="fnA" />
+		</div>
+	</body>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el:'#app',
+			methods:{
+				fnA:function(){
+					alert('a')
+				}
+			}
+		})
+	</script>
+</html>

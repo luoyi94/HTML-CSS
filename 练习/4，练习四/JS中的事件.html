@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			window.onload = function(){
+				//事件分为三要素：事件源、事件类型、执行的命令
+				var oBtn = document.getElementById("btn");
+				var oBox = document.getElementById("box");
+				//onclick是点击事件的意思
+				oBtn.onclick = function(){
+					//点击之后的代码写在这
+					
+					//需求：点击按钮之后，让文字变成红颜色
+					oBtn.style.color = 'red';
+					
+					//需求：点击按钮之后，让文字变成“改变过后的文字”
+					oBtn.value = "改变过后的文字";
+					
+					//需求：改变div的宽高和背景颜色
+					oBox.style.width = '400px';
+					oBox.style.height = '300px';
+					oBox.style.background = 'gray';
+					
+					
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<input type="button" id="btn" value="按钮" />
+		<div id="box"></div>
+	</body>
+</html>

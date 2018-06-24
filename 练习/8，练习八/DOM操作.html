@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<ul>
+			<li>1111我是原有的li</li>
+			<li>2222我是原有的li</li>
+		</ul>
+	</body>
+	<script type="text/javascript">
+		//需求：在原有元素基础上添加数据
+		//不使用DOM时：  追加html内容
+//		$('ul').html($('ul').html() + '<li>这是JS生成的</li>');
+		
+		var oLi = '<li>我是追加的li元素</li>'
+		//往ul的子级最后追加数据
+//		$('ul').append(oLi);
+		
+		//往ul的子级前面追加数据
+//		$('ul').prepend(oLi);
+		
+		//往ul的外部之前追加数据
+//		$('ul').before(oLi);
+		
+		//往ul的外部之后追加数据
+		$('ul').after(oLi);
+		
+		//删除标签   会把删除的元素
+//		$('li').eq(2).remove();
+		
+	</script>
+</html>

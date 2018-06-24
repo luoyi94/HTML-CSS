@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="jquery-1.12.4.min.js" ></script>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+	var obj = {
+		'name':'tom',
+		'age':'18',
+		'arr':[1, 2, 3],
+		fnAdd:function(){
+			//json中的this指的是整个对象obj
+			this.name = 'jack';
+			alert(this.name);
+		}
+	}
+	//json都是通过   点.获取的数据
+	alert(obj.name);  // -->弹出obj中的name tom
+	
+	obj.fnAdd();   // -->调用函数，弹出修改后的内容name  jack
+	</script>
+</html>

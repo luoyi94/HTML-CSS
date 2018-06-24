@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			img{
+				width: 300px;
+				height: 400px;
+				position: absolute;
+				top: 50px;
+				left: 10px;
+				display: no;
+			}
+			div{
+				width: 300px;
+				height: 400px;
+				background-color: white;
+				position: absolute;
+				top: 450px;
+				left: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" value="淡入"/>
+		<input type="button" value="淡出"/>
+		<input type="button" value="淡入/淡出"/>
+		<input type="button" value="向下展开"/>
+		<input type="button" value="向上卷起"/>
+		<input type="button" value="展开/卷起"/>
+		<input type="button" value="动画"/>
+		<img src="lu.jpg"/>
+		<div></div>		
+	</body>
+	<script type="text/javascript">
+////////fade淡入 淡出////////////////////////////////////////////////		
+//		//单个功能
+		$('input[value="淡入"]').click(function(){
+			//淡入  选择对象.fadeIn(毫秒,淡出属性,改变的操作)   
+			//属性默认为swing  还有一个匀速：linear
+			$('img').fadeIn(1000);
+		});
+		
+		
+		$('input[value="淡出"]').click(function(){
+			//单个隐藏功能  fadeOut
+			$('img').fadeOut(1000)
+		})
+		
+		
+//		//两个功能
+		$('input[value="淡入/淡出"]').click(function(){
+			//既可以显示，也可以隐藏
+			$('img').fadeToggle(800);
+		})
+		
+/////////slide展开 卷起//////////////////////////////////////////////
+		//单个向下展开功能
+		$('input[value="向下展开"]').click(function(){
+			$('img').slideDown(1000);
+		});
+		
+		//单个向上卷起功能
+		$('input[value="向上卷起"]').click(function(){
+			$('img').slideUp(1000);
+		});
+		
+		//卷起和展开两个功能
+		$('input[value="展开/卷起"]').click(function(){
+			$('img').slideToggle(1000,'linear');
+		});
+
+/////////动画效果/////////////////////////////////////////////////////////
+//		拓展：让图片从下到上动画消失效果 （不变形）   --视觉欺骗 
+//		原理：创造一个相同大小的div   并且背景颜色和网页颜色一样  点击之后让它的从下面在多少秒之内覆盖住整个图片
+		$('input[value="动画"]').click(function(){
+			$('div').stop().animate({
+			//div标签的元素为一个背景颜色和网页一样  宽高和图片一样的div
+    		//div定位在图片下面  50为 图片离网页上面的高度  刚好重合
+				'top':'50'
+			},1000,'linear');
+		});
+
+
+	</script>
+</html>

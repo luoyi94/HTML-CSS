@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="vue.min.js" ></script>
+	</head>
+	<body>
+		<div id="app">
+			<p>{{message}}</p>
+			
+			<button @click="fnChangeMsg">改变数据和视图</button>
+			<!--@后面跟各种事件-->
+			<input @mouseleave="lll" type="text"/>
+		</div>
+		
+	</body>
+	<script type="text/javascript">
+			var vm = new Vue({
+				el:'#app',   //选取标签
+				data:{message:'hello world!'},		
+				methods:{
+					//获取事件：操作事件
+					fnChangeMsg:function(){
+						this.message = '我是vue.js改变之后的';
+					},
+					lll:function(){
+						this.message = '光标移入文本框啦！';
+					}
+				}
+			});
+			
+			
+		</script>
+</html>

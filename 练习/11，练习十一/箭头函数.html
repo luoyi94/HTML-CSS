@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		//正常定义、调用函数
+//		let fnAlert = function(a,b){
+//			alert(a+b);
+//		}
+//		fnAlert(10,20)
+		
+		//ES6的箭头函数语法。两个值   无法预解析
+//		let fnAlert = (a,b) => {
+//			alert(a + b);
+//		}
+//		fnAlert(20,39);
+		
+		//一个值的语法
+//		let fnAlert = a => {
+//			alert(a)
+//		}
+//		fnAlert(100)
+		
+		//没有值的写法
+//		let fnAlert = () =>{
+//			alert('123')
+//		}
+//		fnAlert()
+		
+		var person = {
+			name:'tom',
+			age:'18',
+			showNmae:function(){
+				setTimeout(()=>{
+					//相隔两个函数 this依然能选中数据
+					alert(this.name);
+				},1000)
+			}
+		}
+		
+		person.showNmae()
+		
+		//总结:箭头函数的好处:1,语法简单 2,让this指向更明确
+	</script>
+</html>

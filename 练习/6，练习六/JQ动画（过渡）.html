@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			div{
+				width: 100px;
+				height: 100px;
+				background: pink;
+				position: absolute;
+				left: 0;
+				top: 50px;
+			}
+		</style>
+		<script type="text/javascript">
+			$(function(){
+				$('input').click(function(){
+					//animate({要改变的带单位的数据},多少毫秒,过渡属性)  从什么属性过渡到什么属性
+					//使用条件：必须是px单位的属性才能做过渡
+					$('div').animate({
+					//如果写在一个animate中，里面的css属性是同步进行
+					//运动方式。默认是'swing'先加速再减速。linear匀速
+					'width':'500px',
+					'height':'600px',
+					'font-size':'100px',
+					'left':'300px'
+				},2000,'linear');
+					
+					//写在不同的animate中可做成分步动画
+					//分步动画：就是做完上一个动画之后再接着做第二个动画
+//					$('div').animate({
+//						'width':'500px'
+//					},2000).animate({
+//						'height':'500px'
+//					},2000)
+				})				
+			})
+		</script>
+	</head>
+	<body>
+		<input type="button" value="走你" />
+		<div>哈<br />哈<br />哈<br />哈<br /></div>
+	</body>
+</html>

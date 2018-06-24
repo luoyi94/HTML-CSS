@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>360搜索</title>
+		<script src="jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			ul{
+				list-style: none;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="text" id="tbn1" />
+		<ul>
+			<li></li>
+		</ul>
+	</body>
+	<script type="text/javascript">
+		$('input').keyup(function(){
+			//keyup键盘抬起事件
+			
+			$.ajax({
+			//https://sug.so.360.cn/suggest?callback=suggest_so&encodein=utf-8&encodeout=utf-8&format=json&fields=word&word=a   360搜索a发回的数据
+			url:'https://sug.so.360.cn/suggest',
+			type:'get',		
+			data:{
+				//要向服务器发送的请求数据  必须带下面参数
+				encodein:'utf-8',
+				encodeout:'utf-8',
+				format:'json',
+				fields:'word',
+				word:$(this).val()
+			},
+			dataType:'jsonp'    //要跨域请求数据，格式要写成jsonp一样
+		})
+		.done(function(data){
+//			$('ul').append('<li>123</li>')
+//			console.log(data.result[0].word)
+			$('ul').html('');   //要先清空
+			for(var i=0;i<data.result.length;i++){
+//				console.log(data.result[i].word)//获得每一条数据的的world
+				$('ul').append('<li>'+data.result[i].word+'</li>')
+			}
+		})
+		.fail(function(){
+			alert('请求失败')
+		});
+		})
+		
+	</script>
+</html>

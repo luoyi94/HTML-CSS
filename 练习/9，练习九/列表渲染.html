@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="vue.min.js" ></script>
+	</head>
+	<body>
+		<ul id="app">
+			<!--v-for="遍历出来的变量 in 列表集合"-->
+			<!--vue中的循环数据，根据自定义参数有多少条就自动循环多少条-->
+			<!--小括号中(数据,索引值)-->
+			<li v-for="(item,index) in items">
+				{{index+1}}、{{ item }}
+			</li>
+		</ul>
+	</body>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				//循环多条数据时,建议使用数组的形式
+				items:['ly','ll','lu','li','yi']
+			}
+		});
+	</script>
+</html>

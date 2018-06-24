@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			window.onload = function(){
+				var oInput = document.getElementById("input1");
+				var oA = document.getElementById("link1");
+				var sValue = oInput.value;  // 20px
+				var sType = oInput.type;  // "text"
+				var sLinks = oA.href;    // http:www.itcast.con
+				oA.style.color = "red";
+				oA.style.fontSize = sValue
+			}
+//		</script>
+	</head>
+	<body>
+		<input type="text" name="setsize" id="input1" value="20px" />
+		<a href="http://www.itcast.cn" id="link1">传志播客</a>
+	</body>
+</html>

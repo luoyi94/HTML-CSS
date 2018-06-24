@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        .talk_con{
+            width:600px;
+            height:500px;
+            border:1px solid #666;
+            margin:50px auto 0;
+            background:#f9f9f9;
+        }
+        .talk_show{
+            width:580px;
+            height:420px;
+            border:1px solid #666;
+            background:#fff;
+            margin:10px auto 0;
+            overflow:auto;
+        }
+        .talk_input{
+            width:580px;
+            margin:10px auto 0;
+        }
+        .whotalk{
+            width:80px;
+            height:30px;
+            float:left;
+            outline:none;
+        }
+        .talk_word{
+            width:420px;
+            height:26px;
+            padding:0px;
+            float:left;
+            margin-left:10px;
+            outline:none;
+            text-indent:10px;
+        }        
+        .talk_sub{
+            width:56px;
+            height:30px;
+            float:left;
+            margin-left:10px;
+        }
+        .atalk{
+           margin:10px; 
+        }
+        .atalk span{
+            display:inline-block;
+            background:#0181cc;
+            border-radius:10px;
+            color:#fff;
+            padding:5px 10px;
+        }
+        .btalk{
+            margin:10px;
+            text-align:right;
+        }
+        .btalk span{
+            display:inline-block;
+            background:#ef8201;
+            border-radius:10px;
+            color:#fff;
+            padding:5px 10px;
+        }
+    </style>
+    <script src="jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">      
+    // 写出对应功能代码  
+    	$(function(){
+    		$('.talk_show').scrollTop('9999999999999')   //控制 一打开页面自动滑到最下面
+    		
+    		$('.talk_word').focus();
+    		
+    		$('.talk_sub').click(function(){
+//  			alert('a')
+				var str = '';  // 用来保存  判断后追加的内容
+				var oShow = $('.talk_show').html();   //原先显示的内容
+				var oWord = $('.talk_word').val();  //文本框内容
+				var oWho = $('.whotalk').prop('value')
+				
+				if(oWord == ''){
+					alert('内容不能为空');
+					return;
+				}
+				
+				if(oWho == 0){
+					str = '<div class="atalk"><span>A说：'+$('.talk_word').val()+'</span></div>'
+				}else{
+					str = '<div class="btalk"><span>B说：'+$('.talk_word').val()+'</span></div>'
+				}
+				$('.talk_show').html(oShow += str);  //追加内容
+				
+				//文本过多时，控制滚动条 自动到最后.scrollTop()  括号表示离滚动条最上端的距离
+				$('.talk_show').scrollTop('9999999999999');
+				
+				$('.talk_word').val('');
+				$('.talk_word').focus();  //说完一句，添加焦点   也就是鼠标可书写位置
+				
+    		})
+    	})
+	
+    </script>
+</head>
+<body>
+    <div class="talk_con">
+        <div class="talk_show" id="words">
+            <div class="atalk"><span>A说：吃饭了吗？</span></div>
+            <div class="atalk"><span>A说：吃饭了吗？</span></div>
+            <div class="atalk"><span>A说：吃饭了吗？</span></div>
+            <div class="atalk"><span>A说：吃饭了吗？</span></div>
+            <div class="atalk"><span>A说：吃饭了吗？</span></div>
+            <div class="atalk"><span>A说：吃饭了吗？</span></div>
+            <div class="atalk"><span>A说：吃饭了吗？</span></div>
+            <div class="atalk"><span>A说：吃饭了吗？</span></div>
+            <div class="atalk"><span>A说：吃饭了吗？</span></div>
+            <div class="atalk"><span>A说：吃饭了吗？</span></div>
+            <div class="atalk"><span>A说：吃饭了吗？</span></div>
+            <div class="atalk"><span>A说：吃饭了吗？</span></div>
+            <div class="atalk"><span>A说：吃饭了吗？</span></div>
+            <div class="btalk"><span>B说：还没呢，你呢？</span></div>
+        </div>
+        <div class="talk_input">
+            <select class="whotalk" id="who">
+                <option value="0">A说：</option>
+                <option value="1">B说：</option>
+            </select>
+            <input type="text" class="talk_word" id="talkwords">
+            <input type="button" value="发送" class="talk_sub" id="talksub">
+        </div>
+    </div>
+</body>
+</html>

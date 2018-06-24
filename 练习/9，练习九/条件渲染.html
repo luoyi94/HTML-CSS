@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="vue.min.js" ></script>
+	</head>
+	<body>
+		<div id="app">
+			<!--v-if和v-else做两次判断 并且两者之间不能加入任何标签-->
+			<h1 v-if="ok">我是ok为true的标签</h1>
+			<h1 v-else="ok">我是ok为false的标签</h1>
+			
+			<!--v-if和v-else-if、v-else-if...可以进行多种条件判断-->
+			<h2 v-if="num==10">我是num=10</h2>
+			<h2 v-else-if="num==20">我是num=20</h2>
+			<h2 v-else-if="num==30">我是num=30</h2>			
+			<h2 v-else-if="num==40">我是num=40</h2>			
+			<h2 v-else="num==50">我是num=其他</h2>
+			
+			<!--
+				v-show判断元素是否显示隐藏。
+				v-show只能判断布尔值.
+				如果是隐藏的话。盒子身上会有display:none的属性。
+				如果是显示的话。盒子身上什么属性都没有
+			-->
+			<p v-show="s">显示/隐藏</p>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				ok:false,
+				num:30,
+				s:false
+			}
+		});
+	</script>
+</html>

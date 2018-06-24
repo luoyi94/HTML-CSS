@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="vue.min.js" ></script>
+	</head>
+	<body>
+	<div id="app">
+		<!--胡子语法-->
+		<h1>{{ num }}</h1>
+		
+		<!--字符串通过转换成数字翻转，到达字符串翻转的效果-->
+		<!--.split('')转换为数字 .reverse()使用数字翻转 .join('')把数字变为字符串-->
+		<h1>{{ str.split('').reverse().join('') }}</h1>
+		
+		<!--三元运算法，其实就是判断  绑定的是class用[三元判断]包起来   其余的直接写-->
+		<!--语法：{{判断条件? 条件为真执行语句:条件为假执行语句}}-->
+		<!--绑定HTML属性，要加上v-bind:。才能调用vue中自定义参数 推荐简写方式:title-->
+		<!--title为鼠标放上去显示文字，改变鼠标放上去的文字属性，即使用属性需要:绑定title-->
+		<h1 :title="str">{{ ok? '很ok':'不ok' }}</h1>
+		
+		<!--事件都要写在HTML中：1，v-on:click 完整写法   2，@click 推荐简写-->
+		<h1>{{ num }}</h1>
+		
+		<input type="button" value="递增" @click="num++" />
+		<!--改变HTML中链接属性值-->
+		
+		<a :href="baidu">点击链接</a>
+		<!--点击按钮将子定义参数baidu改成新的链接地址-->
+		<input type="button" value="改变地址" @click="baidu='http://www.qq.com'" />		
+	</div>
+	</body>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				num:0,
+				str:'123456789',
+				ok:true,
+				baidu:'http://www.baidu.com'
+			}
+		});
+	</script>
+</html>

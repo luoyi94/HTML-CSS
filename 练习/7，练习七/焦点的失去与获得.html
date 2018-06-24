@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			input{outline: none;} 
+			/*去掉表单默认的轮廓线*/
+		</style>
+		<script src="jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<input type="text" />
+	</body>
+	<script type="text/javascript">
+		//获得焦点  一个页面只能有一个焦点
+		//$('input').focus();
+		
+		//获取焦点事件
+//		$('input').focus(function(){
+//			$(this).css({'border':'5px solid red'})
+//		});
+		
+		//失去焦点事件
+		$('input').blur(function(){
+			$(this).css({'border':'5px solid green'});
+		});
+		
+	</script>
+</html>

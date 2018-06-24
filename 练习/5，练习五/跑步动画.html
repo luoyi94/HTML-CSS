@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				background: #c7c7c7;
+				position: relative;
+			}
+			img{
+				width: 300px;
+				height: 200px;
+				position: absolute;
+				left: -90px;
+				top: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" id="go" value="走你" />
+		<input type="button" id="stop" value="停下" />
+		<input type="button" id="back" value="滚回去" />
+		<img src="a.jpg" id="img"/>
+	</body>
+	<script type="text/javascript">
+		var oGo = document.getElementById('go');
+		var oStop = document.getElementById('stop');
+		var oImg = document.getElementById('img');
+		var oBack = document.getElementById('back');
+		
+		var px = null;
+		var run = null;
+		oBack.value = '回去';
+		if(oBack.value != '滚回去'){
+			oGo.onclick = function(){
+			clearInterval(run);
+			run = setInterval(function(){
+				oImg.style.left = px-90 + 'px';
+				px += 5;
+			},100);
+			}
+		oStop.onclick = function(){
+			clearInterval(run);
+			px = null;
+			oBack.value = '滚回去';
+		}
+		}else{
+			oImg.style.left = -90 + 'px';
+			clearInterval(run);
+		}		
+		oBack.onclick = function(){
+			oImg.style.left = -90 + 'px';
+			px = null;
+		}
+		
+	</script>
+</html>

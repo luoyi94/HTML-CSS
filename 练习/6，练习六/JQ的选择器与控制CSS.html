@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.blue{
+				/*background: blue;*/
+				background-color: blue;
+			}
+			.red{
+				background:red;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<h1 class="red">文字文字</h1>
+		<h1 class="blue">蓝色文字</h1>
+		<div id="div1">
+			<span>我是div中的span</span>
+		</div>
+		<span id="span1">我是独立的span</span><br />
+		<input type="text" />
+		<input type="password" />
+	</body>
+	<script type="text/javascript">
+		//单个元素操作语法格式：
+		//		选择标签：	$('标签名')
+		//	以字典的方式修改CSS属性：   选择对象.css({'样式名1':'值1','样式名2':'值2'}) 		
+		//选中所有的h1  改变他的CSS样式color的值为red;
+//		$('h1').css({'color':'red'});  
+		
+		//选择类名class    $('.类名')    和style中使用class使用一样
+		//选择类名为blue的元素，设置它的属性
+//		$('.blue').css({'color':'blue'});
+		
+		//选择id    $('#id名')      #号是特有的格式 不是id本身的名字
+//		$('#span1').css({'color':'red'})    //选中id名为span1的元素把颜色改为red
+		
+		//层级选择用空格隔开   $('div span')  选取div中的span
+//		$('div span').css({'color':'red'});
+
+///////////////////////////////////////////////////////////
+
+		//多个标签	$('标签名1,标签名2,标签名3')
+		//让所有的h1 span input对象的CSS样式中的height值设置为50px;
+//		$('h1,span,input').css({'height':'50px'});
+
+		//选择多个class
+		//$('类1,类2,类3')
+//		$('.red,.blue').css({'border':'5px solid green'});
+		
+		//选择多个id   $('#id名1,#id名2').css({'标签名':'值'})
+		//例子：选中两个id名为div1、span1 修改css样式中color值为red
+		$('#div1,#span1').css({'color':'red'})
+		
+///////////////////////////////////////////////////////////		
+		
+		//属性选择器。根据属性值去选择元素
+		//选取input标签中type属性等于text的标签   
+//		$('input[type = "text"]').css({'height':'50px'});
+
+		//根据选择器获取样式的值。  获取颜色时，得出来的是rgb格式的
+		// $('选择对象').css('要获得值的样式名')
+//		alert($('h1').css('font-size'));
+		
+		
+		//获取背景颜色时  源选择器必须用background-color:blue;
+		//如果用background:blue;   
+		//获得样式为 rgb(0,0,255) none repeat scroll 0% 0% / auto padding-box border-box
+//		alert($('.blue').css('background'));
+		//分析：因为background是背景的全部样式
+		
+//		alert($('.blue').css('background-color'));   // 获得样式rgb(0,0,255)
+	</script>
+</html>

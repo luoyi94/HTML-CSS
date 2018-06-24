@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0px;
+				padding: 0px;
+			}
+			.box{
+				margin: 20px auto;
+				background: #f2f2f2;
+				width: 440px;
+				height: 500px;
+				padding: 20px;
+			}
+			.box h2{
+				height: 50px;
+				line-height: 50px;
+				font-weight: normal;
+				border-bottom: 1px solid #e0e0e0;
+			}
+			.box table{
+				height: 410px;
+				text-align: right;
+			}
+			.text-left{
+				text-align: left;	
+			}
+			.text-top{
+				vertical-align: top;
+			}
+			.select{
+				text-align: left;
+				width: 100px;
+				height: 25px;
+			}
+			.box table text0{
+				width: 240px;
+				height: 24px;
+				
+			}
+			textarea{
+				resize: none;
+			}
+			.input{
+				width: 240px;
+				height: 24px;
+			}
+			.textarea{
+				width: 240px;
+				height: 100px;
+			}
+			.sub{
+				width: 45px;
+				height: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div class="title">
+				<h2>注册表单</h2>
+			</div>	
+			<form action="http://www.itheima.com" method="get">
+			<table>
+				
+				<tr>
+					<td>姓名：</td>
+					<td class="text-left"><input type="text" class="input" name="name"></td>
+				</tr>
+				<tr>
+					<td>密码：</td>
+					<td class="text-left"><input type="password" name="psw" class="input"></td>
+				</tr>
+				<tr>
+					<td>性别：</td>
+					<td class="text-left">
+						<input type="radio" name="sex">&nbsp;&nbsp;男
+						<input type="radio" name="sex">&nbsp;&nbsp;女
+					</td>
+				</tr>
+				<tr>
+					<td>爱好：</td>
+					<td class="text-left">
+						<input type="checkbox">&nbsp;唱歌
+						<input type="checkbox">&nbsp;跑步
+						<input type="checkbox">&nbsp;游泳
+					</td>
+				</tr>
+				<tr>
+					<td>照片：</td>
+					<td><input type="file"></td>
+				</tr>
+				<tr>
+					<td class="text-top">个人描述：</td>
+					<td class="text-left"><textarea class="textarea" name="text"></textarea></td>
+				</tr>
+				<tr>
+					<td>籍贯：</td>
+					<td class="text-left"><select class="select"><option>北京</option><option>湖北</option></select></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td class="text-left">
+						<input type="submit" value="提交" class="sub">&nbsp;
+						<input type="reset" value="重置" class="sub">
+					</td>
+				</tr>
+			</table>
+			</form>
+		</div>
+	</body>
+</html>

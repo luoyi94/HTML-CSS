@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<!--导入JQ库   快捷输出s  选择中script src  在选.js文件名-->
+		<script src="jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			div {
+				width: 400px;
+				height: 300px;
+				background: red;
+			}
+		</style>
+		<script type="text/javascript">
+			//JQ入口函数  简写方式
+			// $(function(){ 内容代码   })
+			
+			$(function(){
+				$('input').click(function() {
+					$('div').hide()
+				})
+				$('div')
+			});
+		</script>
+	</head>
+
+	<body>
+		<input type="button" value="按钮" />
+		<div>
+			<h2>哈哈</h2>
+		</div>
+	</body>
+
+</html>

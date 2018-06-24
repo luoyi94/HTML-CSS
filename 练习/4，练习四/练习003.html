@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        .talk_con{
+            width:600px;
+            height:500px;
+            border:1px solid #666;
+            margin:50px auto 0;
+            background:#f9f9f9;
+        }
+        .talk_show{
+            width:580px;
+            height:420px;
+            border:1px solid #666;
+            background:#fff;
+            margin:10px auto 0;
+            overflow:auto;
+        }
+        .talk_input{
+            width:580px;
+            margin:10px auto 0;
+        }
+        .whotalk{
+            width:80px;
+            height:30px;
+            float:left;
+            outline:none;
+        }
+        .talk_word{
+            width:420px;
+            height:26px;
+            padding:0px;
+            float:left;
+            margin-left:10px;
+            outline:none;
+            text-indent:10px;
+        }        
+        .talk_sub{
+            width:56px;
+            height:30px;
+            float:left;
+            margin-left:10px;
+        }
+        .atalk{
+           margin:10px; 
+        }
+        .atalk span{
+            display:inline-block;
+            background:#0181cc;
+            border-radius:10px;
+            color:#fff;
+            padding:5px 10px;
+        }
+        .btalk{
+            margin:10px;
+            text-align:right;
+        }
+        .btalk span{
+            display:inline-block;
+            background:#ef8201;
+            border-radius:10px;
+            color:#fff;
+            padding:5px 10px;
+        }
+    </style>
+    <script type="text/javascript">      
+    // 写出对应功能代码  
+	window.onload = function(){
+		// 获取id对象
+		var oWords = document.getElementById('words');
+		var oWho = document.getElementById('who');
+		var oTalkwords = document.getElementById('talkwords');
+		var oTalksub = document.getElementById('talksub');
+		
+		// 创建事件
+		oTalksub.onclick = function(){
+			//判断输入是否为空
+			if (oTalkwords.value == ''){
+				alert('请重新输入')
+				return
+			}
+			
+			if(oWho.value == '0'){
+				oWords.innerHTML += 
+				'<div class="atalk"><span>A说：'+ oTalkwords.value +'</span></div>'
+			}else{
+				oWords.innerHTML += 
+				'<div class="btalk"><span>B说：'+ oTalkwords.value +'</span></div>'
+			}
+			oTalkwords.value = '';
+		}	
+	}		
+    </script>
+</head>
+<body>
+    <div class="talk_con">
+        <div class="talk_show" id="words">
+            <div class="atalk"><span>A说：吃饭吗？</span></div>
+            <div class="btalk"><span>B说：不，来碗海参炒面</span></div>
+        </div>
+        <div class="talk_input">
+            <select class="whotalk" id="who">
+                <option value="0">A说：</option>
+                <option value="1">B说：</option>
+            </select>
+            <input type="text" class="talk_word" id="talkwords">
+            <input type="button" value="发送" class="talk_sub" id="talksub">
+        </div>
+    </div>
+</body>
+</html>

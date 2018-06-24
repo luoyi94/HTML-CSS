@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			window.onload = function(){
+				// 控制HTML属性， 直接.属性名即可。
+				// 以下都是设置属性
+				var oBtn = document.getElementById("btn");
+				var oBut = document.getElementById("but");
+				oBtn.href = 'http://ntlias-stu.boxuegu.com/#/login'; //改变它的链接地址
+				oBtn.innerHTML = "学生系统";   //  控制HTML的内容
+				oBut.value = '这是JS控制的字'; //改变他的默认值value
+			}
+		</script>
+	</head>
+	<body>
+		<a href="http://www.baidu.com" id="btn">百度</a>
+		<input type="button" id="but" value="默认" />
+	</body>
+</html>

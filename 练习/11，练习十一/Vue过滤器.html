@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="vue.min.js" ></script>
+	</head>
+	<body>
+		<div id="app">
+			<!--要过滤的数据 | 过滤器的名字-->
+			<h1>{{ money | RMB }}</h1>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				money:1000
+			},
+			//过滤器。对文本做一些格式化的输出 
+			//value代表调用的那数据值
+			filters:{
+				RMB:function(value){
+					if (value>100) {
+						return value + '豪'
+					} else{
+						return value + '穷'
+					}
+				}
+			}
+		});
+	</script>
+</html>

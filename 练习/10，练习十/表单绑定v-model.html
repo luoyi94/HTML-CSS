@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="vue.min.js" ></script>
+	</head>
+	<body>
+		<div id="app">
+			<!--根据保存方式：单个使用字符串或者布尔值  多个就使用数据的方式-->
+			
+			
+			<!--获取表单中的value-->
+			<!--表单绑定 通过表单选择或输入改变自定义参数的值  双向数据绑定-->
+			
+			<!--绑定表单  message与下面的data的message相同，input输入的内容会更新到全局-->
+			<input v-model="message" placeholder="edit me" />
+			<h1>{{ message }}</h1>
+			
+			<!--多行文本框绑定无法读取空格和回车-->
+			<textarea v-model="tarea"></textarea>
+			<h1>{{tarea}}</h1>
+			
+			
+			<!--单个复选框  保存到布尔值中-->
+			<input type="checkbox" v-model="che"/>同意协议
+			<h1>{{che}}</h1>
+			
+			<!--多个复选框要保存到自定义参数为数组，数组是根据复选框中的value去获取的-->
+			<input type="checkbox" value="篮球" v-model="aihao"/>篮球
+			<input type="checkbox" value="足球" v-model="aihao"/>足球
+			<input type="checkbox" value="气球" v-model="aihao"/>皮球
+			<h1>{{aihao}}</h1>
+			
+			
+			<!--单选框  用字符串保存，因为它只保存一个值，也是根据单选框中的value获取的 （不需要写name）-->
+			<input type="radio" v-model="sex" value="man"/>男
+			<input type="radio" v-model="sex" value="girle"/>女
+			<input type="radio" v-model="sex" value="pwd"/>保密
+			<h1>{{sex}}</h1>
+			
+			<!--下拉框 用字符串保存，因为它只保存一个值，在select上使用v-model,可以使用value获取保存，中文不容易判断-->
+			<select v-model="adree">
+				<option value="0">选项一</option>
+				<option value="1">选项二</option>
+				<option value="2">选项三</option>
+			</select>
+			<h1>{{adree}}</h1>
+		</div>
+	</body>
+	<script type="text/javascript">
+		//
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				message:'啦啦啦',
+				tarea:'',
+				che:true,
+				sex:'',
+				aihao:[],
+				adree:'0'
+			}
+		})
+	</script>
+</html>

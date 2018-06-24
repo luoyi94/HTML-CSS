@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.pink{
+				width: 300px;
+				height: 300px;
+				background: pink;
+				display: none;
+				text-align: center;
+				line-height: 300px;
+			}
+			input{
+				border: 0px;
+				width: 60px;
+			}
+			.display{
+				display: block;
+			}
+			.but{
+				background: pink;
+			}
+		</style>
+		<script type="text/javascript">
+			$(function(){
+				//都是对按钮操作  谁点击后面就对谁操作
+				$('input').click(function(){
+					// 点击之后this就是指代点击的那个    给自己添加类but   删除别人的but
+					$(this).addClass('but').siblings().removeClass('but');
+					//这里的$(this).index()获取当前点击的那个的索引
+					//$('div').eq()  选中括号中的数的div      同样给自己添加类display   删除别人的display
+					$('div').eq($(this).index()).addClass('display').siblings().removeClass('display');
+				})
+			})
+		</script>
+	</head>
+	<body>
+		<input type="button" value="按钮0" class="but"/>
+		<input type="button" value="按钮1" />
+		<input type="button" value="按钮2" />
+		<div class="pink display">000我是盒子000</div>
+		<div class="pink">111我是盒子111</div>
+		<div class="pink">2222我是盒子222</div>
+		
+	</body>
+</html>

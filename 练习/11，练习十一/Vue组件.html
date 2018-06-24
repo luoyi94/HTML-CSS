@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="vue.min.js" ></script>
+	</head>
+	<body>
+		<div id="app">
+			<!--使用组件-->
+			<ha></ha>
+		</div>
+	</body>
+	<script type="text/javascript">
+		//注册组件
+		Vue.component('ha',{
+			template:'<div><a href="#">哈哈哈</a></div>'
+		})
+		
+		let vm = new Vue({
+			el:"#app"
+		})
+	</script>
+</html>

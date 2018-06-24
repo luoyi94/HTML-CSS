@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.father{
+				width: 500px;
+				height: 500px;
+				background: red;
+			}
+			.son{
+				width: 300px;
+				height: 300px;
+				background: gray;
+			}
+			.grandson{
+				width: 100px;
+				height: 100px;
+				background: green;
+			}
+		</style>
+		<script src="jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div class="father">
+			<div class="son">
+				<div class="grandson"></div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		$('.father').click(function(){
+			alert('father');			
+		});
+		$('.son').click(function(){
+			alert('son');   // 冒泡事件  此处会弹son和father两个
+//			event.stopPropagation();  // 官方完整写法
+			return false;   //阻止向father冒泡
+		}); 
+		$('.grandson').click(function(){
+			alert('grandson');  // 冒泡事件  此处会弹grandson son father三个
+//			event.stopPropagation();  //官方完整写法
+			return false;    //阻止向冒泡
+		});
+	</script>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.modal {
+				/*display: none;*/
+				position: fixed;
+				left: 100px;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				/*background: rgba(255, 255, 255, .2);*/
+			}
+			
+			.show-modal .modal {
+				display: block
+			}
+			
+			.show-modal .container {
+				-webkit-filter: blur(1px);
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="page show-modal">
+			<div class="container">主要内容</div>
+			<div class="modal">浮层</div>
+		</div>
+	</body>
+
+</html>

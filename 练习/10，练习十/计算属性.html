@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="vue.min.js" ></script>
+	</head>
+	<body>
+		<div id="app">
+			<!--调用函数一般不适用()  methods里面的函数调用-->
+			<!--{{rec}}-->	   
+			
+			<!--计算属性正常调用-->
+			<h1>{{rec}}</h1>
+			
+			<!--该函数放在computed一开始就调用，一刷新网页就弹1，而不需要点击事件-->
+			<input type="button" @click="fnA" />
+			
+		</div>
+	</body>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				message:'0123456789'
+			},
+//			methods:{
+//				//methods是专门给事件调用的函数
+//				//下面这样输入
+//				rec:function(){
+//					return this.message.split('').reverse().join('')
+//					//这里输出的message为一个函数 除非函数调用时使用()才行 单一般不建议这样使用
+//				}
+//			}
+			computed:{
+				//computed是专门给一开始就调用函数去使用
+				rec:function(){
+					return this.message.split('').reverse().join('')
+				},
+				fnA:function(){
+					alert('1')
+				}
+			}
+		})
+	</script>
+</html>

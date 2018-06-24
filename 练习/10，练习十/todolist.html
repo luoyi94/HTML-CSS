@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>todolist</title>
+		<style type="text/css">
+			.list_con {
+				width: 600px;
+				margin: 50px auto 0;
+			}
+			
+			.inputtxt {
+				width: 550px;
+				height: 30px;
+				border: 1px solid #ccc;
+				padding: 0px;
+				text-indent: 10px;
+			}
+			
+			.inputbtn {
+				width: 40px;
+				height: 32px;
+				padding: 0px;
+				border: 1px solid #ccc;
+			}
+			
+			.list {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				margin-top: 20px;
+			}
+			
+			.list li {
+				height: 40px;
+				line-height: 40px;
+				border-bottom: 1px solid #ccc;
+			}
+			
+			.list li span {
+				float: left;
+			}
+			
+			.list li a {
+				float: right;
+				text-decoration: none;
+				margin: 0 10px;
+			}
+		</style>
+		<script type="text/javascript" src="vue.min.js"></script>
+		<script type="text/javascript">
+			window.onload = function(){
+				var vm = new Vue({
+					el:'#todolist',
+					data:{
+						tex:['学习html','学习css','学习javascript'],
+						cwd:''
+					},
+					methods:{
+						//添加元素到列表中
+						fnAdd:function(){
+							if(this.cwd == ''){
+								alert('输入不能为空');
+								return;
+							}
+							this.tex.push(this.cwd)
+							this.cwd = '';     //清空上次输入的
+							document.getElementById('txt1').focus();    //发送之后获得焦点
+						},
+						//删除元素   在列表中删除
+						fnDel:function(i){							
+							this.tex.splice(i,1);  							
+						},
+						//向上移动
+						fnUp:function(i){
+							//判断到顶了
+							if(i == 0){
+								alert('到顶了');
+								return;
+							}
+							this.tex.splice(i-1,0,this.tex[i])
+							this.tex.splice(i+1,1);
+						},
+						//向下移动
+						fnDown:function(i){
+							//判断到底了
+							if(i == this.tex.length-1){
+								alert('到底了');
+								return;
+							}
+							this.tex.splice(i+2,0,this.tex[i]);
+							this.tex.splice(i,1);
+						}						
+					},
+					mounted:function(){
+						//页面刷新就加载此处,获取焦点
+						document.getElementById('txt1').focus();
+					}
+				})
+				
+				
+				
+			}
+		</script>
+	</head>
+
+	<body>
+
+		<div class="list_con" id="todolist">
+			<h2>To do list</h2>
+			<!--输入文本框-->
+			<input type="text" name="" id="txt1" class="inputtxt" v-model="cwd">
+			<!--增加按钮-->
+			<input type="button" name="" value="增加" id="btn1" class="inputbtn" @click="fnAdd">
+			<!--输出内容-->
+			<ul id="list" class="list">
+
+				<li v-for="(item, index) in tex">
+					<span>{{ item }}</span>
+					<a href="javascript:;" class="up" @click="fnUp(index)"> ↑ </a>
+					<a href="javascript:;" class="down" @click="fnDown(index)"> ↓ </a>
+					<a href="javascript:;" class="del" @click="fnDel(index)">删除</a>
+				</li>
+
+			</ul>
+
+		</div>
+	</body>
+
+</html>

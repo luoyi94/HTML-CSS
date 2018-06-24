@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="vue.min.js" ></script>
+	</head>
+	<body>
+		<div id="app">
+			<!--绑定style行内样式，要使用json格式 也就是{:}-->
+			<h1 :style="{color: iRed}">这是H1</h1>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				iRed:'red'
+			}
+		})
+	</script>
+</html>

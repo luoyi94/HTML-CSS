@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.red{
+				color: red;
+			}
+		</style>
+		<script type="text/javascript" src="vue.min.js" ></script>
+	</head>
+	<body>
+		<div id="app">
+			<!--点击按钮，通过改变自定义参数变量的值-->
+			<input type="button" value="按钮" @click="ok=false" />
+			<!--:class绑定属性  增加三元判断 ture为使用red这个class 否则为空-->
+			<h1 :class="[ok? 'red': '']">文字文字</h1>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				ok:true
+			}
+		});
+	</script>
+</html>

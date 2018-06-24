@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		var iNum01 = '13';
+		var iNum02 = '14';
+		var iNum03 = 520;
+		
+		//1，字符串合并操作
+		
+		//字符串+字符串   拼接字符串  类型；string
+//		alert(iNum01 + iNum02);  // 弹出字符串1314
+//		alert(typeof(iNum01 + iNum02));   //弹出string  （字符串） 
+		//typeof判断输出类型
+		
+		//字符串+数字   将数字转换为字符串拼接  类型：string
+//		alert(iNum01 + iNum03);   //弹出13520
+//		alert(typeof(iNum01 + iNum03));    //输出string  类型为字符串
+		//  数字和字符串的运算   -减、*乘、/除   字符串自动转换为数字类型
+		
+		var str1 = '1.abcdef';
+		
+		//  indexOf()  查找数据第一次出现的下标
+//		alert(str1.indexOf('b'));  // 弹出：3
+		
+		//substring(开始索引，结束索引)(不包括结束索引对应的值)  		
+//		alert(str1.substring(1,3));   // 弹出；.a
+		//截取字符串的，如果只有一个值，代表只有开始
+//		alert(str1.substring(2));   // 弹出：abcdef
+		
+		var str2 = '10.999997';
+		//999998输出有误 位数不支持
+		
+		var int1 = 20;
+		//2，parseInt();   将数据类型转换为数值类型，并且变为整数int类型
+//		alert(parseInt(str2) + int1);   // 弹出：30
+		
+		//parseFloat();   把数据类型转换为数值类型
+//		alert(parseFloat(str2) + int1);  //弹出：30.9999   
+		
+		//.split()  把字符串转为数组
+		var str3 = '2018-05-23'
+		
+		//括号写空就把每个字都拆成数组
+//		alert(str3.split(''));   //弹出：2,0,1,8,-,0,5,-,2,3
+		
+		//括号中写符号，就会根据此符号去分割内容
+//		alert(str3.split('-'));   //弹出:2018,05,23
+		
+		//字符串翻转
+		//字符串是不能像数组那样使用.reverse();
+		
+		var str4 = '1234567';
+		//解决办法：先把字符串转为数组。数组再反转。反转完后，再转为字符串
+		alert(str4.split('').reverse().join(''));  // 弹出7654321
+		//str4.split('')将字符串每个字都拆成数组   得到：1,2,3,4,5,6,7
+		//.reverse()反转数组  得到：7,6,5,4,3,2,1
+		//.join('')将反转后的数组  按照括号符号合并  (此时括号为空'')
+		
+		
+		
+	</script>
+</html>

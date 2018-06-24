@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			li{
+				float: left;
+				width: 30px;
+				height: 30px;
+				border: 1px solid #000;
+				margin: 50px;
+				text-align: 50px;
+				text-align: center;
+				line-height: 30px;
+				list-style: none;
+			}
+		</style>
+		<script type="text/javascript">
+			$(function(){
+				$('li').click(function(){
+					
+					//获取当前的下标(索引)    也是从0开始
+	 				alert($(this).index());
+					
+					//链式编程 可以站在自己的角度去选择其他的元素
+					$(this).css({'background':'pink'}).siblings().css({'background':'white'});
+					//谁点击就改变的它的css样式，让它高亮显示     后面跟一个链式-》相当与继续使用this  后面是让它所有的其他（除了自己）同级兄弟背景颜色都是白色
+					
+					
+					
+				})
+			})
+		</script>
+	</head>
+	<body>
+		<ul class="one">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+		</ul>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+		</ul>
+	</body>
+</html>

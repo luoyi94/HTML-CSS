@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="vue.min.js" ></script>
+	</head>
+	<body>
+		<div id="app">
+			<input type="button" value="递增" @click="num++" />
+			<h1>{{ num }}</h1>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				num:0
+			},
+			//监听的作用：监听某个自定义参数，当次参数发送变化，就触发里面的函数
+			watch:{
+				// 监听的参数:funciton(改变之前的值,改变之后的值){}
+				num:function(newval,oldval){
+					console.log(newval + '|' + oldval)
+			}
+			}
+		});
+	</script>
+</html>

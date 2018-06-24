@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			ul,li{
+				list-style: none;
+				font-size: 25px;
+			}
+			a{
+				text-decoration: none;
+			}
+		</style>
+	</head>
+	<body>
+		<ul id="list">
+			<li>将数组中的数据添加到列表中</li>
+		</ul>
+	</body>
+	<script type="text/javascript">
+		var arr = ['复仇者联盟3','前任3','西游记3','变形金刚4','葫芦娃','幕后玩家'];
+		oList = document.getElementById('list');
+		
+		// 通过ID对象获取网页内容
+		// oList.innerHTML = '<li>1<li>';
+		
+		for(var i = 0; i < arr.length; i++){
+			
+			// 在原有基础上，追加每一个数组中内容  到列表中
+			// '++' 代码拼接字符串        '+arr[i]+'
+			oList.innerHTML += '<li><a href="#">'+(i+1)+'，'+arr[i]+'</a></li>'
+			
+		}
+	</script>
+</html>

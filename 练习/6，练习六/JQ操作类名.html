@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.red{color: red;}
+			.font30{font-size: 50px;}
+		</style>
+		<script type="text/javascript">
+			$(function(){
+				//一个标签可以有多个class  也可以写在一起 class = 'red font30'中间用空格隔开
+				//常用的属性放一个class中   需要时就写在使用的标签后面，自己需要改变某些的就在后面空格增加新的属性
+				//这样即能应用新的属性 也能更改、增加某些
+				
+				//addClass('red'); 给选中的标签添加类名.注意：添加的类名不需要带上点.
+				$('h1').addClass('font30');   //给h1标签添加class = "font30"类
+				
+				//.removeClass('red'); 删除.red这个类名
+//				$('h1').removeClass('red');
+			});
+		</script>
+	</head>
+	<body>
+		<h1 class="red">文字文字</h1>
+	</body>
+</html>

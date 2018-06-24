@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="vue.min.js" ></script>
+		<script type="text/javascript">
+			window.onload = function(){
+				var vm = new Vue({
+					//el:绑定的元素，你要让谁可以用到vue的东西
+					el:'div',
+					//data:自定义参数
+					data:{conten:'哈喽'}
+				});
+				var vmp = new Vue({
+					el:'.p',
+					data:{pcon:'ly'}
+				});
+				var vms = new Vue({
+					el:'#span1',
+					data:{scon:18}
+				});
+				var vma = new Vue({
+					el:'a',
+					data:{
+						llll:'啦啦啦'
+					}
+				});
+				
+			}
+		</script>
+	</head>
+	<body>
+		<!--胡子语法{{}}-->
+		<div>{{conten}}</div>
+		<p class="p">{{pcon}}</p>
+		<span id="span1">{{scon}}</span>
+		<!--内容带引号 导致没有使用参数的值  当标签还是被选中 则去掉大括号 显示引号里面的内容-->
+		<a>{{ 'llll' }}</a>
+	</body>
+</html>

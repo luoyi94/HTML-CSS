@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="jquery-1.12.4.min.js" ></script>
+	</head>
+	<body>
+		<div>
+			<p>我是div中的p</p>
+		</div>
+		<div>
+			<span>我是div中的span</span>
+		</div>
+		<h1 class="red">文字</h1>
+		<h1 class="blue">文字</h1>
+		<h1 class="yellow">文字</h1>
+	</body>
+	<script type="text/javascript">
+		//选择含有p元素的div  $要获取的
+//		$('div').has('p').css({'background':'pink'});
+		
+		//选择不是.red类名的h1标签，排除.red的所有h1标签
+//		$('h1').not('.red').css({'font-size':'50px'});
+
+		//最常用    eq()括号中的数字   起点是从0  
+		//$('h1').eq(2);         选中第3个h1
+		$('h1').eq(2).css({'font-size':'50px'});
+	</script>
+</html>

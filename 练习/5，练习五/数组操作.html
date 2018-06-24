@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			//对象的实例创建
+			//var aList = new Array(1,2,3);
+
+			//直接量创建  最常用
+			var aList = [1, 2, 3, 4];
+			
+			//该元素的长度  （个数）
+			//alert(aList.length);    //输出：3
+			
+			//通过下标操作数据
+			//alert(aList[0]);   //输出：1
+			
+			//将数组成员通过一个分割符号合并成      字符串
+			//alert(aList.join('-'));  // 输出；1-2-3
+			//alert(aList.join(''));    // 输出：123
+			
+			//push()在数组最后追加成员    pop()删除成员
+			//aList.push(5);    //在最后追加数据5
+			//alert(aList)      // 输出；1，2，3，5
+			
+			//aList.pop(3);    //删除数据3
+			//alert(aList);	 //输出：1,2
+			
+			//aList.reverse();	//将数组反转
+			//alert(aList);   //输出：4,3,2,1
+//			var aList1 = [3,2,5,1,6];
+//			aList1.reverse();  //反转    原有基础倒着排序  并不是按照大小顺序
+//			alert(aList1)  //输出 6,1,5,2,3
+			
+//			alert(aList.indexOf(5));  // 返回数组中第一次出现的索引值
+			//如果元素不存在  则返回 -1
+			
+			
+			//splice(开始索引，删除个数，增加的数据)
+//			aList.splice(2,1);   // 从索引2开始 删除一个数据3
+//			alert(aList);   // 输出：1,2,4
+			
+//			aList.splice(1,1,5,6);  //从索引1开始删除一个数据2 再从索引增加5,6两个数据
+//			alert(aList);   //输出：1,5,6,3,4
+			
+			//多维数组
+			var aList2 = [[1,2,3],[5,9,3],['1','a','b','c']];  //数组里面的元素是一个数组
+			alert(aList2[2][1]);  //输出；a     先取出索引为第2元素['1','a','b','c']  再拿去这个元素中索引为1的元素 a
+			
+			
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		function aa(){
+			alert('aal');
+		}
+		aa();
+		
+		//封闭函数的作用：解决命名重复的问题。
+		//语法格式(function(){定义与执行函数})()
+		//封闭函数相当于一个封闭的空间，外面的代码无法影响里面的，里面的代码也无法影响外面的。
+		//以后接收别人的代码的时候，在封闭函数中去书写
+		(function(){
+			function aa(){
+				alert('aa2');
+			}
+			aa();  //虽然与外面的函数名相同 但是因为在封闭内，所以不会影响
+		})()
+	</script>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="vue.min.js" ></script>
+		<style type="text/css">
+			div{
+				width: 300px;
+				height: 300px;
+				background: red;
+				font-size: 50px;
+				line-height: 300px;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<a :href="hr">{{ aaaa }}</a>
+		<div @mouseenter="num++" @mouseenter="num++">{{ num }}</div>
+		<span id="app" title="ok">{{ok? 'yes':'no'}}</span>
+	</body>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el:'a',
+			data:{
+				hr:"#",
+				aaaa:'百度'
+			}
+		});
+		var vm = new Vue({
+			el:'div',
+			data:{
+				num:0
+			}
+		});
+		var vmp = new Vue({
+			el:'#app',			
+			data:{
+				ok:true
+			}
+		});
+	</script>
+</html>
