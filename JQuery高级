@@ -1,0 +1,348 @@
+事件冒泡  
+ 
+--发送事件的标签是嵌套在别的标签内部时发送
+
+在一个对象上触发某类事件（比如单击onclick事件），如果此对象定义了此事件的处理程序，那么此事件就会调用这个处理程序，如果没有定义此事件处理程序或者事件返回true，那么这个事件会向这个对象的父级对象传播，从里到外，直至它被处理（父级对象所有同类事件都将被激活），或者它到达了对象层次的最顶层，即document对象（有些浏览器是window）。
+
+事件冒泡的作用
+事件冒泡允许多个操作被集中处理（把事件处理器添加到一个父级元素上，避免把事件处理器添加到多个子级元素上），它还可以让你在对象层的不同级别捕获事件。
+
+事件冒泡出现场景：子级和长辈都有事件。触发子级的话，连长辈事件都会一并触发
+
+
+快捷创建：div.son  + Tab键      快速生成class为son的div标签
+    
+
+<div class="son"></div>
+
+阻止事件冒泡  
+
+
+	* --官方写法：    event.stopPropagation() 来阻止
+	* --简写方法：    return false;
+
+
+
+
+$(function(){
+    $('.father').click(function() {
+        alert('father');
+    });
+    $('.son').click(function() {
+        alert('son');             // 冒泡事件   点击里面的.son外层所有的事件都会触发
+        //event.stopPropagation();      //完整写法
+               return false;                             // 简写
+    });
+    $box3.click(function(event) {
+        alert('grandson');
+        //event.stopPropagation();
+        return false;
+    });
+    $(document).click(function(event) {
+        alert('grandfather');    //最外层的事件可以不写 但是如果以后外层还是事件 就得写入
+    });
+})
+
+......
+
+<div class="father">
+    <div class="son">
+        <div class="grandson"></div>
+    </div>
+</div>
+
+
+表单提交的阻止冒泡和提交
+
+合并阻止操作
+实际开发中，一般把阻止冒泡和阻止默认行为合并起来写，合并写法可以用
+
+
+阻止默认行为   // event.stopPropagation();
+阻止表单提交  // event.preventDefault();
+合并写法：  return false;
+
+
+例子：
+页面弹框（点击弹框外弹框关闭）;
+//需求：弹窗显示时，点击除了弹窗外的其他部分 关闭窗口
+
+显示按钮事件外面body还有事件  所以按钮事件要阻止冒泡
+只能通过排除法：
+点击body让弹框隐藏，点击弹框内部，阻止隐藏。
+
+
+事件委托
+
+事件委托就是利用冒泡的原理，把事件加到父级上，通过判断事件来源的子集，执行相应的操作，事件委托首先可以极大减少事件绑定次数，提高性能；其次可以让新加入的子元素也可以拥有相同的操作。
+
+通过JQ动态添加的元素，只有使用事件委托才能生效。
+
+
+事件委托的写法
+
+$(function(){
+    //语法：选取父级.delegate(子级,事件,操作代码)
+   //托管给list的子类li点击click事件执行以下代码
+    $('#list').delegate('li', 'click', function() {
+        $(this).css({background:'red'});
+    });
+})
+...
+<ul id="list">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+</ul>
+
+
+Dom操作
+
+简化了在JQ中增删HTML内容代码  
+
+不使用DOM要在ul中原有li后面追加一行li元素：  使用.html()追加内容
+
+
+$('ul').html($('ul').html() + '<li>这是追加的li元素</li>)
+
+使用DOM操作时：
+
+
+$('ul').append('<li>这是追加的li元素</li>');
+
+
+元素节点操作指的是改变html的标签结构，它有两种情况：
+1、移动现有标签的位置
+2、将新创建的标签插入到现有的标签中
+
+创建新标签
+
+
+官方写法：
+var $div = $('<div>'); //创建一个空的div
+var $div2 = $('<div>这是一个div元素</div>');
+简写： 常用
+var oLi = '<li>我是一个li元素</li>'
+
+移动或者插入标签的方法
+
+一般常用的就是前面那种：
+
+
+	* 在元素内部添加
+	* append()     从后面追加    （append附加）
+	* prepend()   从前面追加     （prepend预先考虑）
+
+
+
+	* 在元素外部添加
+	* after()       从之后追加       （after在...之后）
+	* before()    从之前追加       （before在...之前）
+
+
+
+
+1、append()和appendTo()：在现存元素的内部，从后面放入元素
+
+
+例子：追加内容到div内部之后添加
+官方定义元素节点
+//var $span = $('<span>这是一个span元素</span>');
+简写方式定义元素节点
+var oSpan = '<span>这是一个span元素</span>';
+$('#div1').append(oSpan);
+......
+<div id="div1"></div>
+
+2、prepend()和prependTo()：在现存元素的内部，从前面放入元素
+
+3、after()和insertAfter()：在现存元素的外部，从后面放入元素
+
+4、before()和insertBefore()：在现存元素的外部，从前面放入元素
+
+
+删除标签   斩草除根
+
+
+$('#div1').remove();
+
+注意：1，同时使用时会有先后效果  如果先追加了元素，再删除追加的元素，网页不会显示追加的那一条
+          2，在元素的外部追加元素时，追加像li、td这种原先有外层包裹的元素时，网页不会自动给它加ul、table。而是直接在外层追加内容
+
+
+例子：    todolist(计划列表)实例
+需求：实现文本框输入内容增加到列表中，也可以点击删除一行列表，点击上下改变顺序
+案例总结：
+1，删除内容要使用事件委托，让动态添加的元素也能有相应操作
+2，选择当前父级前面或后面同级的元素 $(this).parent().prev($(this).parent())要添加的括号内容为当前的父级，是一个对象，不是获取的HTML内容
+3，判断子级的元素的个数来控制到最下面和最上面提醒，并不执行
+
+
+javascript对象
+
+javascript中的对象，可以理解成是一个键值对的集合，键是调用每个值的名称，值可以是基本变量，还可以是函数和对象。
+
+创建javascript对象有两种方法，一种是通过顶级Object类来实例化一个对象，然后在对象上面添加属性和方法：
+
+
+var person = new Object();
+
+// 添加属性：
+person.name = 'tom';
+person.age = '25';
+
+// 添加方法：
+person.sayName = function(){
+    alert(this.name);
+}
+
+alert(person.age);  // 调用属性
+person.sayName();   // 调用方法
+还可以通过对象直接量的方式创建对象：
+
+var person2 = {
+    name:'Rose',
+    age: 18,
+    sayName:function(){
+        alert('My name is' + this.name);
+    }
+}
+// 调用属性和方法：
+alert(person2.age);
+person2.sayName();
+
+json
+
+json是 JavaScript Object Notation 的首字母缩写，单词的意思是javascript对象表示法，这里说的json指的是类似于javascript对象的一种数据格式对象，目前这种数据格式比较流行，逐渐替换掉了传统的xml数据格式。
+
+jison中this指的是整个对象  json都是通过点.去获取的
+json数据对象类似于JavaScript中的对象，但是它的键对应的值里面是没有函数方法的，值可以是普通变量，不支持undefined，值还可以是数组或者json对象。
+
+与JavaScript对象写法不同的是，json对象的属性名称和字符串值需要用双引号引起来，用单引号或者不用引号会导致读取数据错误。
+
+数据值是可以用引号引起来的
+
+json格式的数据：
+
+
+{
+    "name":"tom",
+    "age":18
+}
+json的另外一个数据格式是数组，和javascript中的数组字面量相同。
+
+["tom",18,"programmer"]
+还可以是更复杂的数据机构：
+
+{
+    "name":"jack",
+    "age":29,
+    "hobby":["reading","travel","photography"]
+    "school":{
+        "name":"Merrimack College",
+        "location":'North Andover, MA'
+    }
+}
+
+
+
+
+
+
+ajax
+
+ajax一个前后台配合的技术，它可以让javascript发送http请求，与后台通信，获取数据和信息。ajax技术的原理是实例化xmlhttp对象，使用此对象与后台通信。jquery将它封装成了一个函数$.ajax()，我们可以直接用这个函数来执行ajax请求。
+
+一个页面可以写多个ajax，一个ajax只能写一个地址url
+ajax需要在服务器环境下运行。
+
+$.ajax使用方法
+常用参数：
+1、url 请求地址
+2、type 请求方式，默认是'GET'，常用的还有'POST'
+3、dataType 设置返回的数据格式，常用的是'json'格式，也可以设置为'html'
+4、data 设置发送给服务器的数据
+5、success 设置请求成功后的回调函数
+6、error 设置请求失败后的回调函数
+7、async 设置是否异步，默认值是'true'，表示异步
+
+旧式写法：
+
+
+$.ajax({
+    url: '/change_data',
+    //type:获取或者提交的方式  get/post
+    type: 'GET',
+    //dataType:数据的格式  文件后缀
+    dataType: 'json',
+    data:{'code':300268}
+        //如果要读取文件的数据，必须要在function中加入一个形参
+        //形参名dat没有规定的，只要和下面使用的相同就行了
+    success:function(dat){
+                //成功后执行的命令    
+        alert(dat.name);   //取出该文件字典中的key为name的值
+    },
+    error:function(){
+        //读取失败后执行的命令
+        alert('服务器超时，请重试！');
+    }
+});
+
+新的写法(推荐)：   链式编程
+
+
+$.ajax({
+    url: '/change_data',
+    type: 'GET',
+    dataType: 'json',
+    data:{'code':300268}
+})   //中间的不带分号  以便后面使用点.链式编程
+.done(function(dat) {
+    //成功之后执行命令  （done完成了）
+    alert(dat.name);
+})
+.fail(function() {
+    //失败之后执行的命令  （fail失败）
+    alert('服务器超时，请重试！');
+});
+
+$.ajax的简写方式
+$.ajax按照请求方式可以简写成$.get或者$.post方式
+
+
+$.get("/change_data", {'code':300268},
+  function(dat){
+    alert(dat.name);
+});
+
+$.post("/change_data", {'code':300268},
+  function(dat){
+    alert(dat.name);
+});
+
+例子    个人选股系统ajax实现
+需求：网页原始没有任何数据，使用ajax获取.json文件的内容，按照格式输出到网页中
+总结：function(data){}获取成功大括号里面的data表示.json文件里面{}里的内容
+data.list表示list{}大括号里面的内容   list数组的内容用 list[0].id获取
+
+
+
+
+
+
+与ajax相关的概念：
+
+同步和异步
+现实生活中，同步指的是同时做几件事情，异步指的是做完一件事后再做另外一件事，程序中的同步和异步是把现实生活中的概念对调，也就是程序中的异步指的是现实生活中的同步，程序中的同步指的是现实生活中的异步。
+
+局部刷新和无刷新
+ajax可以实现局部刷新，也叫做无刷新，无刷新指的是整个页面不刷新，只是局部刷新，ajax可以自己发送http请求，不用通过浏览器的地址栏，所以页面整体不会刷新，ajax获取到后台数据，更新页面显示数据的部分，就做到了页面局部刷新。
+
+数据接口
+数据接口是后台程序提供的，它是一个url地址，访问这个地址，会对数据进行增、删、改、查的操作，最终会返回json格式的数据或者操作信息，格式也可以是text、xml等。
+
+
+
+
