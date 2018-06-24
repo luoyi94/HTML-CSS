@@ -1,0 +1,382 @@
+vue,JS简介
+
+Vue.js是前端三大新框架：Angular.js、React.js、Vue.js之一，Vue.js目前的使用和关注程度在三大框架中稍微胜出，并且它的热度还在递增。
+
+Vue.js可以作为一个js库来使用，也可以用它全套的工具来构建系统界面，这些可以根据项目的需要灵活选择，所以说，Vue.js是一套构建用户界面的渐进式框架。
+
+Vue的核心库只关注视图层，Vue的目标是通过尽可能简单的 API 实现响应的数据绑定，在这一点上Vue.js类似于后台的模板语言。
+
+Vue也可以将界面拆分成一个个的组件，通过组件来构建界面，然后用自动化工具来生成单页面(SPA - single page application)系统。
+
+方便使用数据库 json  支持移动端获取数据  使用json格式  从新建一个对象开始
+
+快捷创建：div#app  + Tab键    快速创建 <div id="app"></div>
+
+vue无法书写事件和结构  必需在html中写结构 vue.js大多数都在操作数据
+
+
+Vue.js基本概念
+
+首先通过将vue.js作为一个js库来使用，来学习vue的一些基本概念，我们下载了vue.js后，需要在页面上通过script标签引入vue.js，开发中可以使用开发版本vue.js，产品上线要换成vue.min.js。
+
+
+<script type="text/javascript" src="js/vue.min.js"></script>
+
+Vue实例
+
+每个 Vue 应用都是通过实例化一个新的 Vue对象开始的：
+
+固定书写：
+
+
+//和JS一样，如果body前面要加上入口函数window.onload = function(){}
+<script type="text/javascript">
+var vm = new Vue({
+    el:'要绑定的元素',    //你要让谁可以用vue的东西  唯一
+    data:{
+    字典格式的自定义参数,
+    ......
+    }
+    methods:{
+    自定义函数名:function(){}
+    }
+});
+</script>
+
+
+window.onload = function(){
+    var vm = new Vue({
+                //el:绑定的元素，你要让谁可以用到vue的东西
+        el:'#app',
+                //data:自定义参数  会共享全局  而且会动态更新全局
+        data:{message:'hello world!'}
+    });
+    var vm = new Vue({
+        el:'a',
+        data:{
+            llll:'哈喽'
+        }
+    });
+}    
+......
+
+
+<!--胡子语法{{ }}-->
+<div id="app">{{ message }}</div>
+<!--内容带引号 导致没有使用参数的值  当标签还是被选中 则去掉大括号 显示引号里面的内容-->
+<a>{{'llll'}}</a>
+
+页面显示：hello world!llll
+
+其中，el属性对应一个标签，当vue对象创建后，这个标签内的区域就被vue对象接管，在这个区域内就可以使用vue对象中定义的属性和方法。
+
+
+
+数据与方法
+
+当一个 Vue 实例被创建时，它向 Vue 的响应式系统中加入了其data对象中能找到的所有的属性。当这些属性的值发生改变时，视图将会产生“响应”，即匹配更新为新的值。还可以在Vue实例中定义方法，通过方法来改变实例中data对象中的数据，数据改变了，视图中的数据也改变。
+
+
+window.onload = function(){
+    var vm = new Vue({
+        el:'#app',
+        data:{message:'hello world!'},
+           //methods:前面为固定写法，指后面的数据是要定义的类型为函数
+        //通过事件调用的函数都要写在methods对象中
+        methods:{
+            //自定义函数名:function(){}
+            fnChangeMsg:function(){
+                this.message = 'hello Vue.js!';
+            }
+        }
+    });
+}    
+......
+
+<div id="app">
+    <p>{{ message }}</p>
+    //@后面跟各种事件   事件只能在htnl中添加无法在vue中创建
+    <button @click="fnChangeMsg">改变数据和视图</button>
+</div>
+
+
+Vue.js模板语法
+
+模板语法指的是如何将数据放入html中，Vue.js使用了基于 HTML的模板语法，允许开发者声明式地将DOM绑定至底层 Vue 实例的数据。所有 Vue.js的模板都是合法的 HTML ，所以能被遵循规范的浏览器和 HTML 解析器解析。
+
+插入值
+数据绑定最常见的形式就是使用“Mustache”胡子语法 (双大括号) 的文本插值：
+
+
+<span>Message: {{ msg }}</span>
+
+
+如果是标签的属性要使用值，需要写成使用v-bind指令：
+
+
+<a v-bind:href="url" v-bind:title='tip'>百度网</a>
+
+插入的值当中还可以写表达式：
+
+{{ number + 1 }}      数值运算
+{{ ok ? 'YES' : 'NO' }}     三元运输法
+{{ message.split('').reverse().join('') }}        js中字符串与整数转换
+<a v-bind:href="url">链接文字</a>        链接属性
+
+运用实例
+
+
+
+<script type="text/javascript" src="vue.min.js" ></script>     <!--导入模块-->
+... ...
+<body>
+    <div id="app">
+        <!--胡子语法-->
+        <h1>{{ num }}</h1>
+        <!--字符串通过转换成数字翻转，到达字符串翻转的效果-->
+        <!--.split('')转换为数字 .reverse()使用数字翻转 .join('')把数字变为字符串-->
+        <h1>{{ str.split('').reverse().join('') }}</h1>
+
+        <!--三元运算法，其实就是判断-->
+        <!--语法：{{判断条件? 条件为真执行语句:条件为假执行语句}}-->、
+        <!--绑定HTML属性，要加上v-bind:。才能调用vue中自定义参数 推荐简写方式:title-->
+        <!--title为鼠标放上去显示文字，改变鼠标放上去的文字属性，即使用属性需要:绑定title-->
+        <h1 :title="str">{{ ok? '很ok':'不ok' }}</h1>
+
+        <!--事件都要写在HTML中：1，v-on:click 完整写法   2，@click 推荐简写-->
+        <h1>{{ num }}</h1>
+        <input type="button" value="递增" @click="num++" />
+
+        <!--改变HTML中链接属性值-->
+        <a :href="baidu">点击链接</a>
+        <!--点击按钮将子定义参数baidu改成新的链接地址 改变自定义参数，则全部动态更新-->
+        <input type="button" value="改变地址" @click="baidu='http://www.qq.com'" />
+        
+    </div>
+    </body>
+    <script type="text/javascript">
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                num:0,
+                str:'123456789',
+                ok:true,
+                baidu:'http://www.baidu.com'
+            }
+        });
+    </script>
+... ...
+
+
+指令
+
+指令 (Directives) 是带有“v-”前缀的特殊属性。指令属性的值预期是单个JavaScript表达式，指令的职责是，当表达式的值改变时，将其产生的连带影响，响应式地作用于DOM。常见的指令有v-bind、v-if、v-on。
+
+<!-- 根据ok的布尔值来插入/移除 <p> 元素 -->
+<p v-if="ok">是否显示这一段</p>
+
+<!-- 监听按钮的click事件来执行fnChangeMsg方法 -->
+<button v-on:click="fnChangeMsg">按钮</button>
+
+缩写
+
+v-bind和v-on事件这两个指令会经常用，所以有简写方式：
+
+<!-- 完整语法 -->
+<a v-bind:href="url">...</a>
+
+<!-- 缩写 -->
+<a :href="url">...</a>
+
+
+<!-- 完整语法 -->
+<button v-on:click="fnChangeMsg">按钮</button>
+
+<!-- 缩写 -->
+<button @click="fnChangeMsg">按钮</button>
+
+
+
+Class 与 Style 绑定
+
+使用v-bind指令来设置元素的class属性或者sytle属性，它们的属性值可以是表达式，vue.js在这一块做了增强，表达式结果除了是字符串之外，还可以是对象或者数组。
+
+
+Class绑定  ----数组语法
+
+可以给v-bind:class传一个数组，以应用一个 class 列表
+
+
+<div id="app">
+    <!--点击按钮，通过改变自定义参数变量的值-->
+    <input type="button" value="按钮" @click="ok=false" />
+    <!--:class绑定属性  增加三元判断 ture为使用red这个class 否则为空-->
+    <h1 :class="[ok? 'red': '']">文字文字</h1>
+</div>
+... ...
+<script type="text/javascript">
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            ok:true
+        }
+    });
+</script>
+
+案例：使用vue完成选项卡
+总结：1，点击按钮，改变自定义参数num的值，让标签三元判断num是否点击的为当前，是则加上class名，不是则把class变为空''，注意：此时绑定了class所以要写:clss。
+2，下面的内容就直接判断num的值，是点击当前则添加具有让自己显示功能的clas，否则为空''
+
+绑定style  --绑定行内执行的样式
+
+
+<div id="app">
+    <!--绑定style行内样式，要使用json格式 也就是{:}-->
+    <h1 :style="{color: iRed}">这是H1</h1>
+</div>
+......
+<script type="text/javascript">
+    var vm = new Vue({
+        el:'#app',
+        data:{
+        iRed:'red'
+        }
+    })
+</script>
+
+
+
+条件渲染
+
+通过条件指令可以控制元素的创建(显示)或者销毁(隐藏)
+
+v-if    -v-if可以控制元素的创建或者销毁
+
+销毁---页面没有该内容  而且对应的它的标签也会消失。
+
+
+<h1 v-if="ok">Yes</h1>   //data中ok的值为ture则显示Yes；为false则销毁Yes
+
+v-else指令来表示 v-if 的"else 块"
+
+v-else 元素必须紧跟在带 v-if 或者 v-else-if 的元素的后面，否则它将不会被识别。
+
+
+<div v-if="Math.random() > 0.5">
+  Now you see me
+</div>
+<div v-else>
+  Now you don't
+</div>
+
+当有多个判断的时候使用v-else-if ......
+v-else-if顾名思义，充当 v-if 的“else-if 块”，可以连续使用：
+
+
+<div v-if="type === 'A'">
+  A
+</div>
+<div v-else-if="type === 'B'">
+  B
+</div>
+<div v-else-if="type === 'C'">
+  C
+</div>
+<div v-else>
+  Not A/B/C
+</div>
+
+v-show  常用
+
+另一个用于根据条件展示元素的选项是 v-show 指令。用法和v-if大致一样，但是它不支持v-else,它和v-if的区别是，它制作元素样式的显示和隐藏，元素一直是存在的。
+隐藏起来的数据不会显示到页面中，要通过控制台来查看是否存在。
+
+
+<h1 v-show="ok">Hello!</h1>
+
+运用上面的判断方法
+
+
+<div id="app">
+    <!--v-if和v-else做两次判断 并且两者之间不能加入任何标签-->
+    <h1 v-if="ok">我是ok为true的标签</h1>
+    <h1 v-else="ok">我是ok为false的标签</h1>
+
+    <!--v-if和v-else-if、v-else-if...可以进行多种条件判断-->
+    <h2 v-if="num==10">我是num=10</h2>
+    <h2 v-else-if="num==20">我是num=20</h2>
+    <h2 v-else-if="num==30">我是num=30</h2>            
+    <h2 v-else-if="num==40">我是num=40</h2>            
+    <h2 v-else="num==50">我是num=其他</h2>
+    
+    <!--v-show判断元素是否显示隐藏。
+    v-show只能判断布尔值.
+    如果是隐藏的话。盒子身上会有display:none的属性。
+    如果是显示的话。盒子身上什么属性都没有
+    -->
+    <p v-show="s">显示/隐藏</p>
+</div>
+...
+<script type="text/javascript">
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            ok:false,
+            num:30,
+            s:false
+        }
+    });
+</script>
+
+
+列表渲染
+
+通过v-for指令可以将一组数据渲染到页面中，数据可以是数组或者对象，v-for 指令需要使用 item in items 形式的特殊语法，items 是源数据数组并且 item 是数组元素迭代的别名。
+
+
+循环数组   要循环输出什么数据到什么标签中就在该便签中加入循环语句
+<ul id="app">
+    <!--语法：v-for="遍历出来的变量 in 列表集合"-->
+    <!--vue中的循环数据，根据自定义参数有多少条就自动循环多少条-->
+    <!--小括号中(数据,索引值)-->
+    <li v-for="(item,index) in items">
+    {{index+1}}、{{ item }}
+    </li>
+</ul>
+vue对象创建
+
+<script type="text/javascript">
+    var vm = new Vue({
+        el:'#app',
+        data:{
+    //循环多条数据时,建议使用数组的形式
+        items:['ly','ll','lu','li','yi']
+        }
+});
+</script>
+
+循环对象  
+
+-- v-for 通过一个对象的属性来迭代
+
+v-for = "(值,属性名) in boject"
+
+
+<div id="app">
+    <ul>
+        <!--渲染的是对象格式：v-for = "(参数值,参数名) in 对象"-->
+        <li v-for="(value,key) in list">{{key}} ： {{value}}</li>
+    </ul>
+</div>
+......
+<script type="text/javascript">
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            list:{
+                name:'tom',
+                age:18
+            }
+        }
+    })
+</script>
